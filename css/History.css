@@ -1,0 +1,69 @@
+﻿/* 
+Version     Date            Coder       Comments
+1.0.1       2024-03-15      EYOUNG      Initial.
+1.0.2       2024-03-22      TBaxter     Fixed float and width
+
+*/
+
+body {
+}
+
+/* Style for the left text box */
+.left-hst-text {
+    background-color: white;
+    border: 2px solid orange;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 10px; /* Rounded corners */
+    width: calc(60% - 40px); /* Adjusted width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
+    overflow: hidden; /* Clear floats */
+    float:left;
+}
+
+    /* Style for the heading */
+    .left-hst-text h2 {
+        color: orange;
+    }
+
+    /* Style for the paragraph */
+    .left-hst-text p {
+        color: black;
+    }
+
+/* CURRENTLY COMMENTED OUT BECAUSE IMAGE KEEPS SHOWING UP BELOW THE TEXT-------------------*/
+/* Style for the image floated to the right */
+/*.image-right {
+    float: right;*/ /* Float the image to the right */
+    /*margin-left: 20px;*/ /* Adjust as needed for spacing */
+    /*max-width: 40%;*/ /* Limit the width of the image */
+/*}*/
+
+/* Style for the right text box */
+.right-hst-text {
+    background-color: white;
+    border: 2px solid orange;
+    padding: 20px;
+    margin-top: 20px;
+    margin-right: 10px;
+    border-radius: 10px; /* Rounded corners */
+    width: calc(60% - 40px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
+    overflow: hidden; /* Clear floats */
+    text-align: right; /* Align text and heading to the right */
+    float: right;
+}
+
+    /* Style for the heading */
+    .right-hst-text h2 {
+        color: orange;
+        text-align: right; /* Align heading to the right */
+    }
+
+    /* Style for the paragraph */
+    .right-hst-text p {
+        color: black;
+        text-align: right; /* Align paragraph text to the right */
+    }
+

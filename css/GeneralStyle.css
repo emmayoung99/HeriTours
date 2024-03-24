@@ -1,0 +1,215 @@
+﻿/* CSS GENERAL FLOWERBOX - used for background/extra stuff
+Version Date        Coder       Comments
+1.0.1   2024-02-19  TBaxter     Initial. added background and Social Media sticky side bar. changed bar from left to right side
+1.1.0   2024-02-19  TBaxter     added button and button hover. still wont move to centre of screen
+2.0.0   2024-02-21  TBaxter     fixed background image
+2.0.1   2024-03-05  EYOUNG      Added css for user selection box
+3.0.0   2024-03-13  HMusni      Migrated from cshtml to aspx solution
+3.0.1   2024-03-22  TBaxter     Added more styling for accordian
+
+aim is to turn markers into click events that cause the infoCard to pop-up
+added AdvancedMarkerElement const to begin making markers a click event
+Social media still needs logo images
+
+*/
+
+/* Header styling */
+header {
+    background-color: darkorange;
+}
+/* Body styling */
+body {
+    background-color: beige;
+}
+/* Index page body styling */
+#bodyI { /*overwrite body for Index only*/
+    background-image: url(img/Hamilton.jpg);
+    background-color: beige;
+}
+/* Secondary body styling */
+#body2 {
+    margin: 10%;
+}
+/* Footer styling */
+footer {
+    background-color: darkorange;
+}
+
+
+/*Styling for buttons --------------------------------------------------------*/
+.button1 {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    padding: 14px 25px 14px 25px;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 50px;
+    border-color: ThreeDDarkShadow;
+    position: fixed;
+    top: 50%;
+    left: 44%;
+}
+
+    .button1:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+
+.button2 {
+    background-color: darkorange;
+    color: black;
+    padding: 14px 25px 14px 25px;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 50px;
+    border-color: ThreeDDarkShadow;
+    position: center;
+    display: block;
+}
+
+    .button2:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.6;
+    }
+
+.button3 {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    padding: 14px 25px 14px 25px;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 50px;
+    border-color: ThreeDDarkShadow;
+}
+
+    .button3:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+
+/* User slection box on the selection page */
+#userSelectionBoxContainer {
+    background-color: white;
+    padding: 10px;
+    border: solid;
+    border-color: darkorange;
+    border-width: 0.3vw;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/*Social Media-----------------------------------------------------------------------------------*/
+.sticky-social-bar {
+    padding: 0;
+    margin: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 9.25rem;
+    background-color: #333333;
+    position: fixed;
+    right: -6.75rem;
+}
+
+    .sticky-social-bar .social-icon {
+        list-style-type: none;
+        color: #fefefe;
+        background-color: inherit;
+        margin: 0;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        font-size: 1.1rem;
+        padding: 0.25rem 0.25rem 0.5rem;
+    }
+
+        .sticky-social-bar .social-icon:first-of-type {
+            padding-top: 0.375rem;
+        }
+
+        .sticky-social-bar .social-icon:last-of-type {
+            padding-bottom: 0.625rem;
+        }
+
+        .sticky-social-bar .social-icon > a {
+            color: inherit;
+            background-color: inherit;
+        }
+
+            .sticky-social-bar .social-icon > a > .fa {
+                padding: .5rem;
+                width: 2rem;
+                height: 2rem;
+                float: left;
+                margin-right: 0.5rem;
+            }
+
+                .sticky-social-bar .social-icon > a > .fa.fa-facebook {
+                    background-color: #3b5998;
+                }
+
+                .sticky-social-bar .social-icon > a > .fa.fa-twitter {
+                    background-color: #55acee;
+                }
+
+                .sticky-social-bar .social-icon > a > .fa.fa-instagram {
+                    background-color: #125688;
+                }
+
+            .sticky-social-bar .social-icon > a > .social-icon-text {
+                font-size: 80%;
+                color: #fefefe;
+                text-transform: uppercase;
+                margin-right: 0.5rem;
+            }
+
+        .sticky-social-bar .social-icon:hover {
+            -webkit-transform: translateX(-8.75rem);
+            -ms-transform: translateX(-8.75rem);
+            transform: translateX(-8.75rem);
+        }
+
+            .sticky-social-bar .social-icon:hover > a {
+                color: inherit;
+                background-color: inherit;
+            }
+
+/*Styling for the accordian menu ------------------------------------------------*/
+#Accordian {
+    border-style: solid;
+    border-color: darkorange;
+    border-width: 0.3vw;
+    background-color: lightgrey;
+    width: 80%;
+    max-height: 200px;
+    margin: 0 auto; /* Made the menu centred */
+    overflow: auto;
+}
+
+.list-group-item {
+    border: hidden;
+}
+
+    .list-group-item:hover {
+        background-color: orange;
+    }
+
+#AccordionContainer, #SelectionContainer {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.accordion-button:not(.collapsed) {
+    color: black !important;
+    background-color: orange !important;    
+}
