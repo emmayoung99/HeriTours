@@ -15,6 +15,7 @@
 1.3.0   2024-03-13  HMusni      Migrated from cshtml to aspx solution. Reset the css and js relative paths.
 1.3.1   2024-03-19  HMusni      Added temporary buttons on the map page for the heritage and transportation layers to activate the onClick functions
 1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
+1.4.1   2024-03-27  TBaxter     Added Buttons.css link
 -->
 
 <!DOCTYPE html>
