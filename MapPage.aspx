@@ -14,6 +14,7 @@
 1.2.5   2024-03-08  HMusni      Added in heritage site type buttons, ID functions connect to AddMarkers.js
 1.3.0   2024-03-13  HMusni      Migrated from cshtml to aspx solution. Reset the css and js relative paths.
 1.3.1   2024-03-19  HMusni      Added temporary buttons on the map page for the heritage and transportation layers to activate the onClick functions
+1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
 -->
 
 <!DOCTYPE html>
@@ -28,10 +29,18 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Map CSS -->
-    <link href="./css/MapStyle.css" rel="stylesheet">
+    <%--<link href="./css/MapStyle.css" rel="stylesheet">--%>
+    <link rel="stylesheet" href="./css/MapStyle.css">
     <!-- Polyfill for Map -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <%--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>--%>
     <link href="./css/GeneralStyle.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script src="./js/ArcGISMap.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </head>
 <body>
 
@@ -62,31 +71,36 @@
     </nav>
 </header>
 
-        <div id="map" style="height: 900px; width: 100%;"></div>
+        <%--<div id="map" style="height: 900px; width: 100%;"></div>--%>
+        <div id="viewDiv" style="height: 900px; width: 100%;">></div>
 
         <button id="AntiqueShops" onclick="GetAntiqueShops()" type="button">Antique Shops</button>
         <button id="CemeteryandFuneralHomes" onclick="GetCemetery()" type="button">Cemetery and Funeral Homes</button>
         <button id="Churches" onclick="GetChurches()" type="button">Churches</button>
         <button id="Farms" onclick="GetFarms()" type="button">Farms</button>
         <button id="Hospitals" onclick="GetHospitals()" type="button">Hospitals</button>
-        <button id="Museum" onclick="GetMuseums()" type="button">Museums</button>
+        <button id="Museums" onclick="GetMuseums()" type="button">Museums</button>
         <button id="Other" onclick="GetOther()" type="button">Other</button>
         <button id="ParkandGardens" onclick="GetParks()" type="button">Park and Gardens</button>
         <button id="Residences" onclick="GetResidences()" type="button">Residences</button>
         <button id="Schools" onclick="GetSchools()" type="button">Schools</button>
         <button id="Theatres" onclick="GetTheatres()" type="button">Theatres</button>
+        <button id="Clear" onclick="ClearMap()" type="button">CLEAR MAP</button>
 
         <br />
-        <button id="Bike" onclick="getBikeLayer()" type="button">BIKE ROUTE</button>
+        <%--transportation layers to be replaced--%>
+        <%--<button id="Bike" onclick="getBikeLayer()" type="button">BIKE ROUTE</button>
         <button id="Transit" onclick="getTransitLayer()" type="button">TRANSIT ROUTE</button>
-        <button id="Traffic" onclick="getTrafficLayer()" type="button">TRAFFIC ROUTE</button>
+        <button id="Traffic" onclick="getTrafficLayer()" type="button">TRAFFIC ROUTE</button>--%>
         
+        <input type="checkbox" id="Community" name="Community" />
+        <label for="Community">Community</label>
     
                
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true"></asp:ScriptManager>
-        <script src="js/GoogleMap.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6haxPnf_GlOOJLMl4XX-_y9id7NBzh8&callback=initMap"
-            async defer></script>
+        <%--<script src="js/GoogleMap.js"></script>--%>
+       <%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6haxPnf_GlOOJLMl4XX-_y9id7NBzh8&callback=initMap"
+            async defer></script>--%>
     </form>
 </body>
 </html>

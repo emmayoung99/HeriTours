@@ -10,6 +10,7 @@ using DatabaseConn;
 /*
 Version     Date            Coder       Comments
 1.0.0       2024-03-16      HMusni      Initial.Added Page_Load and GetData models to retrieve and organize heritage type data.
+1.2.0       2024-03-25      AGibbs      Added a function to get community polygons 
 */
 
 
@@ -18,6 +19,7 @@ namespace HeriTours_4._0
     public partial class MapPage : System.Web.UI.Page
     {
         private static List<String> ModelMarkers = new List<String>();
+        private static List<String> ModelPolygons = new List<String>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,6 +36,9 @@ namespace HeriTours_4._0
                 ModelMarkers.AddRange(D.GetMarkers(heritageType));
             }
 
+            //ModelPolygons.AddRange(D.GetPolys());
+            
+
         }
 
         [System.Web.Services.WebMethod()]
@@ -49,5 +54,20 @@ namespace HeriTours_4._0
 
             return ReturnList.ToArray();
         }
+
+        
+        public static String[] GetPolygons(String TheMessage)
+        {
+            List<String> ModelPolys = new List<string>();
+
+            foreach (String value in ModelPolygons.FindAll(n => n.Contains(TheMessage)))
+            {
+                ModelPolys.Add(value);
+            }
+
+            return ModelPolys.ToArray();
+        }
+
+
     }
 }

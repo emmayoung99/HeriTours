@@ -23,6 +23,7 @@ Version     Date        Coder     Comments
 1.2.0       2024-03-12  HMusni    Migrated from cshtml to aspx solution
 1.3.0       2024-03-12  HMusni    Modified the GetMarkers script to read directly from the database rather than creating txt files for each heritage site type
 1.3.1       2024-03-20  HMusni    Added the method GetHeritageTypes to read from the database to generate a list of heritage types
+1.3.3       2024-03-25  AGibbs    Added a connection to tbl_Community to get community polygons from sql
 
    
 Notes: 
@@ -36,8 +37,7 @@ Connect to SQL, build 'TheModel'; not writing to file
 */
 namespace DatabaseConn
 {
-    //using System.Collections.Generic;
-    //using System.Data.SqlClient;
+   
 
     public class DatabaseConn
     {
@@ -107,5 +107,56 @@ namespace DatabaseConn
 
 
         }
+
+        public List<String> GetPolys()
+        {
+            string query = "Select CommunityID, Linestring From tbl_Community";
+            List<String> Polys = new List<string>();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                int i = 0;
+
+                while (reader.Read())
+                {
+                    i++;
+
+                    Polys.Add(reader["CommunityID"].ToString() + "|" + reader["Community"].ToString() + "|" + reader["LinestringWKT"].ToString());
+
+
+                }
+                conn.Close();
+                return Polys;
+            }
+        }
+
+        public List<String> GetCommunityPolygons()
+        {
+            List<String> Community = new List<String>();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            {
+                SqlCommand cmd = new SqlCommand("SELECT Community FROM tbl_Community", conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Community.Add(reader["Community"].ToString());
+                }
+
+                conn.Close();
+
+                return Community;
+            }
+
+
+        }
+
+
     }
 }

@@ -148,6 +148,14 @@ function GetOther() {
     PageMethods.GetData(Message, onSuccess, onError);
 }
 
+function GetPolys() {
+
+    let Message = "Community";
+
+    PageMethods.GetData(Message, onSuccess, onError);
+
+}
+
 function getBikeLayer() {
 
     map.setCenter(new google.maps.LatLng(43.246307400636745, - 79.87203765102602));

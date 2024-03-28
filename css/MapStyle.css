@@ -4,10 +4,21 @@ Version Date        Coder      Comments
 1.1.0   2024-02-08  TBaxter    moved to asp.core
 1.1.1   2024-02-17  TBaxter    changed margins
 1.2.0   2024-03-13  HMusni     Migrated from cshtml to aspx solution
+1.2.1   2024-03-27  AGibbs     Added styling for ArcGIS Map 
 */
 
 /*current location map*/
-#map {
+#viewDiv {
+    /*display: inline-block;*/
+    margin-bottom: 1%;
+    height: 600px;
+    width: 100%;
+    border-style: solid;
+    border-color: darkorange;
+    border-width: 3px;
+}
+
+/*#map {
     display: inline-block;
     margin-bottom: 1%;
     height: 600px;
@@ -38,3 +49,4 @@ Version Date        Coder      Comments
     border-radius: 10px;
     float: right;
 }
+*/
