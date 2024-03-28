@@ -30,7 +30,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Map CSS -->
     <%--<link href="./css/MapStyle.css" rel="stylesheet">--%>
-    <link rel="stylesheet" href="./css/MapStyle.css">
+    <link rel="stylesheet" href="./css/MapStyle.css"/>
+    <link rel="stylesheet" href="./css/Buttons.css"/>
     <!-- Polyfill for Map -->
     <%--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>--%>
     <link href="./css/GeneralStyle.css" rel="stylesheet">
@@ -80,13 +81,13 @@
         <button id="Farms" onclick="GetFarms()" type="button">Farms</button>
         <button id="Hospitals" onclick="GetHospitals()" type="button">Hospitals</button>
         <button id="Museums" onclick="GetMuseums()" type="button">Museums</button>
-        <button id="Other" onclick="GetOther()" type="button">Other</button>
         <button id="ParkandGardens" onclick="GetParks()" type="button">Park and Gardens</button>
         <button id="Residences" onclick="GetResidences()" type="button">Residences</button>
         <button id="Schools" onclick="GetSchools()" type="button">Schools</button>
         <button id="Theatres" onclick="GetTheatres()" type="button">Theatres</button>
-        <button id="Clear" onclick="ClearMap()" type="button">CLEAR MAP</button>
-
+        <button id="Other" onclick="GetOther()" type="button">Other</button>
+        <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR MAP</b></button>
+        
         <br />
         <%--transportation layers to be replaced--%>
         <%--<button id="Bike" onclick="getBikeLayer()" type="button">BIKE ROUTE</button>

@@ -70,6 +70,7 @@
     <Content Include="ChooseLoc.aspx" />
     <Content Include="css\GeneralStyle.css" />
     <Content Include="css\History.css" />
+    <Content Include="css\Buttons.css" />
     <Content Include="css\MapStyle.css" />
     <Content Include="History.aspx" />
     <Content Include="Index.aspx" />

@@ -52,7 +52,7 @@ namespace DatabaseConn
             List<String> Markers = new List<string>();
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
 
             {
                 SqlCommand cmd = new SqlCommand(query, conn);

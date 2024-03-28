@@ -1,0 +1,208 @@
+﻿/* CSS Map1 FLOWERBOX
+Version Date        Coder      Comments
+1.0.1   2024-02-01  TBaxter    Initial. Made different so CLEAR MAP could be different
+*/
+
+
+#AntiqueShops {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+    #AntiqueShops:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#CemeteryandFuneralHomes {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #CemeteryandFuneralHomes:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Churches {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Churches:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Farms {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Farms:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Hospitals {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Hospitals:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Museums {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Museums:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Other {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Other:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#ParkandGardens {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #ParkandGardens:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Residences {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Residences:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Schools {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Schools:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Clear {
+    background-color: red;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Clear:hover {
+        background-color: darkred;
+        color: black;
+        opacity: 0.4;
+    }
+
+#Theatres {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+}
+
+    #Theatres:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
