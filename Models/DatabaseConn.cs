@@ -89,7 +89,7 @@ namespace DatabaseConn
             List<String> HeritageTypes = new List<String>();
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
             {
                 SqlCommand cmd = new SqlCommand("SELECT Heritage_Type FROM tbl_Heritage_Type", conn);
                 conn.Open();
