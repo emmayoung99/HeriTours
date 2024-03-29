@@ -1,13 +1,15 @@
 ﻿/*
 Version     Date            Coder       Comments
 1.0.0       2024-03-27      AGibbs      Initial. Converted from googleAPI to ArcGIS functions, add current location function, clear map function,
+1.0.1       2024-03-28      TBaxter     Added Popup content
+
 
 */
 
 
 require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/Locate", "esri/rest/route",
-    "esri/rest/support/RouteParameters", "esri/rest/support/FeatureSet"],
-    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, route, RouteParameters, FeatureSet) {
+    "esri/rest/support/RouteParameters", "esri/rest/support/FeatureSet", "esri/layers/FeatureLayer"],
+    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, route, RouteParameters, FeatureSet, FeatureLayer) {
 
         esriConfig.apiKey = "AAPKb9ba5b70acaf4564beb06aec117188cd9URpR3n5paDTjcdXIRS8mmifpBaPFoboHHsoscJskwOXRXBtJGQntMsKlnRjVBAb";
 
@@ -66,8 +68,12 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
                 };
 
+                //4=streetNo1, 5=StreetName, 6=Community, 
+                let address = ('Address: ' + tempArray[4] + ' ' + tempArray[5] + ', ' + tempArray[6])
+
                 let popupTemplate = {
-                    title: tempArray[3],
+                    title: tempArray[3],                   
+                    content: address 
                 };
 
                 let pointGraphic = new Graphic({
@@ -271,9 +277,5 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
 
         }
-
-
-
-
 
 });

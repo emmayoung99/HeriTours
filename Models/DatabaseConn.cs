@@ -23,12 +23,9 @@ Version     Date        Coder     Comments
 1.2.0       2024-03-12  HMusni    Migrated from cshtml to aspx solution
 1.3.0       2024-03-12  HMusni    Modified the GetMarkers script to read directly from the database rather than creating txt files for each heritage site type
 1.3.1       2024-03-20  HMusni    Added the method GetHeritageTypes to read from the database to generate a list of heritage types
-1.3.3       2024-03-25  AGibbs    Added a connection to tbl_Community to get community polygons from sql
-
+1.3.2       2024-03-25  AGibbs    Added a connection to tbl_Community to get community polygons from sql
+1.3.3       2024-03-28  TBaxter   Added Address variables into GetMarkers and reworked popup to include content
    
-Notes: 
-- All paths need to be switched to relative (can't be absolute) - Tori
--
 */
 
 /* Logistical Notes
@@ -36,19 +33,14 @@ Connect to SQL, build 'TheModel'; not writing to file
 
 */
 namespace DatabaseConn
-{
-   
-
+{   
     public class DatabaseConn
     {
-
         private static List<String> TheModel = new List<String>();
 
-        
-        //Creates a file of markers for each heritage type
         public List<String> GetMarkers(String heritageType)
         {
-            string query = "Select HeritageSitesID, Latitude, Longitude, HeritageSite From tbl_HeritageSites HS Join tbl_HeritageSite_Type HST On HS.HeritageSitesID = HST.HeritageSite_Type_Ref Where HST.Heritage_Type_Ref=(Select Heritage_TypeID From tbl_Heritage_Type Where Heritage_Type='" + heritageType + "')";
+            string query = "Select HeritageSitesID, Latitude, Longitude, HeritageSite, StreetNo1, StreetName, Community From tbl_HeritageSites HS Join tbl_HeritageSite_Type HST On HS.HeritageSitesID = HST.HeritageSite_Type_Ref JOIN tbl_Community C ON C.CommunityID = HS.Community_FK Where HST.Heritage_Type_Ref=(Select Heritage_TypeID From tbl_Heritage_Type Where Heritage_Type='" + heritageType + "')";
             List<String> Markers = new List<string>();
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
@@ -59,30 +51,17 @@ namespace DatabaseConn
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 int i = 0;
-
                 while (reader.Read())
                 {
                     i++;
+                    Markers.Add(reader["HeritageSitesID"].ToString() + "|" + reader["Latitude"].ToString() + "|" + reader["Longitude"].ToString() + "|" + reader["HeritageSite"].ToString() + "|" + reader["StreetNo1"].ToString() + "|" + reader["StreetName"].ToString() + "|" + reader["Community"].ToString() + "|" + heritageType);
 
-                    Markers.Add(reader["HeritageSitesID"].ToString() + "|" + reader["Latitude"].ToString() + "|" + reader["Longitude"].ToString() + "|" + reader["HeritageSite"].ToString() + "|" + heritageType);
-
-
-
-
-                    //Markers.Add(@"var marker" + i.ToString() + @" = new google.maps.Marker({
-                    //position: new google.maps.LatLng(" + reader["Latitude"].ToString() + ", " +
-                    //reader["Longitude"].ToString() + ")," +
-                    //@"map: map,
-                    //title: " + "\"" + reader["HeritageSite"].ToString() + "\"" + "}); " +
-                    //"marker" + i.ToString() + ".setMap(map);");
-                    //Markers.Add(reader["Latitude"].ToString() + "," + reader["Longitude"].ToString() +"," + reader["HeritageSite"].ToString());
                 }
                 conn.Close();
                 return Markers;
                 //File.WriteAllLines(@"./wwwroot/Assets/HeritageMarkers" + heritageType + ".txt", Markers);
             }
         }
-
 
         public List<String> GetHeritageTypes()
         {
@@ -105,15 +84,15 @@ namespace DatabaseConn
                 return HeritageTypes;
             }
 
-
         }
+
 
         public List<String> GetPolys()
         {
             string query = "Select CommunityID, Linestring From tbl_Community";
             List<String> Polys = new List<string>();
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
 
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
