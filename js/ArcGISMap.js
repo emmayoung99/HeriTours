@@ -2,14 +2,15 @@
 Version     Date            Coder       Comments
 1.0.0       2024-03-27      AGibbs      Initial. Converted from googleAPI to ArcGIS functions, add current location function, clear map function,
 1.0.1       2024-03-28      TBaxter     Added Popup content
+1.0.2       2024-03-29      AGibbs      Added scale bar and compass and frame constraint
 
 
 */
 
 
-require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/Locate", "esri/rest/route",
-    "esri/rest/support/RouteParameters", "esri/rest/support/FeatureSet", "esri/layers/FeatureLayer"],
-    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, route, RouteParameters, FeatureSet, FeatureLayer) {
+require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/Locate", "esri/widgets/ScaleBar",
+    "esri/widgets/Compass", "esri/layers/GeoJSONLayer", "esri/rest/route", "esri/rest/support/RouteParameters", "esri/rest/support/FeatureSet", "esri/layers/FeatureLayer"],
+    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, ScaleBar, Compass, GeoJSONLayer, route, RouteParameters, FeatureSet, FeatureLayer) {
 
         esriConfig.apiKey = "AAPKb9ba5b70acaf4564beb06aec117188cd9URpR3n5paDTjcdXIRS8mmifpBaPFoboHHsoscJskwOXRXBtJGQntMsKlnRjVBAb";
 
@@ -20,12 +21,35 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         const view = new MapView({
             map: map,
             center: [-79.87203765102602, 43.246307400636745],
-            zoom: 11,
-            container: "viewDiv"
+            zoom: 11.5,
+            container: "viewDiv", 
+            constraints: {
+                snaptozoom: false
+            }
         });
 
-        /*current location*/
 
+        /*  constrain map view to Hamilton*/
+        view.when(() => {
+            view.constraints.minScale = view.scale;
+            
+        });
+
+        /*add scalebar*/
+        const scalebar = new ScaleBar({
+            view: view
+        });
+        view.ui.add(scalebar, "bottom-right");
+
+        /*add compass*/
+        const compassWidget = new Compass({
+            view: view
+        });
+
+        
+        view.ui.add(compassWidget, "top-left");
+
+        /*current location*/
         const locate = new Locate({
             view: view,
             useHeadingEnabled: false,
@@ -36,7 +60,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         });
         view.ui.add(locate, "top-left");
 
-
+      
 
         const graphicsLayer = new GraphicsLayer();
         map.add(graphicsLayer);
@@ -190,6 +214,17 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             graphicsLayer.removeAll();
         }
         document.getElementById("Clear").addEventListener("click", ClearMap);
+
+
+
+
+
+
+
+
+
+
+
 
 
 

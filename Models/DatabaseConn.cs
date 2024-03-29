@@ -44,7 +44,7 @@ namespace DatabaseConn
             List<String> Markers = new List<string>();
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
 
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -68,7 +68,7 @@ namespace DatabaseConn
             List<String> HeritageTypes = new List<String>();
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
             {
                 SqlCommand cmd = new SqlCommand("SELECT Heritage_Type FROM tbl_Heritage_Type", conn);
                 conn.Open();
@@ -92,7 +92,7 @@ namespace DatabaseConn
             string query = "Select CommunityID, Linestring From tbl_Community";
             List<String> Polys = new List<string>();
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
 
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -113,28 +113,28 @@ namespace DatabaseConn
             }
         }
 
-        public List<String> GetCommunityPolygons()
-        {
-            List<String> Community = new List<String>();
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
-            {
-                SqlCommand cmd = new SqlCommand("SELECT Community FROM tbl_Community", conn);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+        //public List<String> GetCommunityPolygons()
+        //{
+        //    List<String> Community = new List<String>();
+        //    SqlConnection conn = new SqlConnection();
+        //    conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+        //    {
+        //        SqlCommand cmd = new SqlCommand("SELECT Community FROM tbl_Community", conn);
+        //        conn.Open();
+        //        SqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    Community.Add(reader["Community"].ToString());
-                }
+        //        while (reader.Read())
+        //        {
+        //            Community.Add(reader["Community"].ToString());
+        //        }
 
-                conn.Close();
+        //        conn.Close();
 
-                return Community;
-            }
+        //        return Community;
+        //    }
 
 
-        }
+        //}
 
 
     }
