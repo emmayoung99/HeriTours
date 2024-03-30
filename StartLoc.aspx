@@ -44,12 +44,13 @@ Version     Date            Coder       Comments
         <div class="text-center">
             <!-- Button to use user's current location and redirect to the selection page -->
             <!-- This button eventually needs to take the devices current location and save it as the first point for the route-->
-            <a class="button3" href="Selection.aspx"><b>Use My Location</b></a>
+            <a class="button3" href="#" onclick="getCurrentLocation()"><b>Use My Location</b></a>
             <!-- Button to allow the user to choose a starting point and redirect to the selection page -->
             <a class="button3" href="ChooseLoc.aspx"><b>Choose Starting Point</b></a>
         </div>
     </form>
 
     <script src="./js/GoogleMap.js"></script> 
+    <script src="./js/ArcGISMap.js"></script> 
 </body>
 </html>

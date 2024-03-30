@@ -2,14 +2,15 @@
 
 <!DOCTYPE html>
 
-<!--Version Date        Coder      Comments
-1.0.1   2024-02-01  TBaxter    Initial. Added bootstrap, InfoCard, map html and CSS links just to get it to show up
-1.0.2   2024-02-02  TBaxter    added nav bar with the intention to move all html related files into a ASP.NET file
-1.1.0   2024-02-08  TBaxter    moved to asp.core (ASP.NET Web App (.NET Framework) wasn't an option
-1.1.1   2024-02-17  TBaxter    fixed .js and .css links
-1.2.0   2024-02-19  TBaxter    added timestamp, image, button that also links to page2
-1.2.1   2024-03-08  EYOUNG     Modified structure and added more comments
-1.3.0   2024-03-13  HMusni     Migrated from cshtml to aspx solution. Updated href links to new web pages and css stylesheets.
+<!--Version     Date            Coder      Comments
+    1.0.1       2024-02-01      TBaxter    Initial. Added bootstrap, InfoCard, map html and CSS links just to get it to show up
+    1.0.2       2024-02-02      TBaxter    added nav bar with the intention to move all html related files into a ASP.NET file
+    1.1.0       2024-02-08      TBaxter    moved to asp.core (ASP.NET Web App (.NET Framework) wasn't an option
+    1.1.1       2024-02-17      TBaxter    fixed .js and .css links
+    1.2.0       2024-02-19      TBaxter    added timestamp, image, button that also links to page2
+    1.2.1       2024-03-08      EYOUNG     Modified structure and added more comments
+    1.3.0       2024-03-13      HMusni     Migrated from cshtml to aspx solution. Updated href links to new web pages and css stylesheets.
+    1.3.1       2021-03-30      EYOUNG     Button now jumps to MapPage as we have decided to abandon ChooseLoc, StartLoc and the Selection as this will all be done directly on MapPage
 -->
 
 
@@ -39,30 +40,33 @@
         <uc1:NavBar runat="server" ID="NavBar" />--%>
 
 
-<header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-orange border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">HeriTours</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="History.aspx">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="StartLoc.aspx">Start</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-light bg-orange border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">HeriTours</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="History.aspx">History</a>
+                            </li>
+                            <%--<li class="nav-item">
+                                <a class="nav-link text-dark" href="StartLoc.aspx">Start</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
+                            </li>--%>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="MapPage.aspx">Map</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
 
 
@@ -76,7 +80,7 @@
         <!-- button leads to starting location page to create the tour -->
         <div>
             <!-- Creates button1 which links to the StartLoc page-->
-            <a class="button1" href="StartLoc.aspx"><b>Create Your Tour</b></a>
+            <a class="button1" href="MapPage.aspx"><b>Create Your Tour</b></a>
         </div>
     </form>
 </body>

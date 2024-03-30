@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChooseLoc.aspx.cs" Inherits="HeriTours_4._0.ChooseLoc" %>
+
 <!DOCTYPE html>
 <!--
 Version     Date            Coder       Comments
@@ -20,18 +21,18 @@ Version     Date            Coder       Comments
     <!-- Polyfill for Map -->
     <%--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>--%>
     <!-- Include Map CSS -->
-   <%-- <link href="./css/MapStyle.css" rel="stylesheet" />--%>
+    <%-- <link href="./css/MapStyle.css" rel="stylesheet" />--%>
     <link rel="stylesheet" href="./css/MapStyle.css">
     <!-- Include General CSS -->
     <link href="./css/GeneralStyle.css" rel="stylesheet" />
-<%--    bootstrap script--%>
+    <%--    bootstrap script--%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
-     <!-- ArcGIS Online reference -->
+    <!-- ArcGIS Online reference -->
     <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.29/"></script>    
-    <script src="./js/ArcGISMap.js"></script> 
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script src="./js/ArcGISMap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -40,29 +41,29 @@ Version     Date            Coder       Comments
     <form id="form1" runat="server">
 
         <header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-orange border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">HeriTours</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="History.aspx">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="StartLoc.aspx">Start</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+            <nav class="navbar navbar-expand-sm navbar-light bg-orange border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">HeriTours</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="History.aspx">History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="StartLoc.aspx">Start</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
         <div class="text-center">
             <!-- Display a heading with a large font and bold text -->
@@ -75,9 +76,9 @@ Version     Date            Coder       Comments
 
         <!-- Container for the map -->
         <%--<div id="map"></div>--%>
-      
-         <!-- ArcGIS Map container -->
-         <div id="viewDiv"></div>
+
+        <!-- ArcGIS Map container -->
+        <div id="viewDiv"></div>
 
 
         <br />
@@ -96,9 +97,5 @@ Version     Date            Coder       Comments
 
     <%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6haxPnf_GlOOJLMl4XX-_y9id7NBzh8&callback=initMap"
      async defer></script>--%>
-
-
-
-   
 </body>
 </html>

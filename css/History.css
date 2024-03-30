@@ -16,10 +16,11 @@ body {
     margin-top: 20px;
     margin-left: 10px;
     border-radius: 10px; /* Rounded corners */
-    width: calc(60% - 40px); /* Adjusted width */
+    width: auto; /* Adjusted width */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
     overflow: hidden; /* Clear floats */
-    float:left;
+    float: left;
+    display: flex; /* Use flexbox for layout */
 }
 
     /* Style for the heading */
@@ -30,6 +31,12 @@ body {
     /* Style for the paragraph */
     .left-hst-text p {
         color: black;
+    }
+
+    /* Style for the image within the left text box */
+    .left-hst-text img {
+        max-width: 40%; /* Limit the width of the image */
+        margin-left: 20px; /* Adjust as needed for spacing */
     }
 
 /* CURRENTLY COMMENTED OUT BECAUSE IMAGE KEEPS SHOWING UP BELOW THE TEXT-------------------*/
@@ -53,6 +60,7 @@ body {
     overflow: hidden; /* Clear floats */
     text-align: right; /* Align text and heading to the right */
     float: right;
+    height: auto;
 }
 
     /* Style for the heading */
