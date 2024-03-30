@@ -16,6 +16,7 @@
 1.3.1   2024-03-19  HMusni      Added temporary buttons on the map page for the heritage and transportation layers to activate the onClick functions
 1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
 1.4.1   2024-03-27  TBaxter     Added Buttons.css link
+1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
 -->
 
 <!DOCTYPE html>
@@ -72,9 +73,12 @@
         </div>
     </nav>
 </header>
+        <!-- Combo boxes for route. no styling at this time -->
+        <select id="SelOrig" class="form-select" ></select> <!-- Start -->
+        <select id="SelDes" class="form-select" ></select> <!-- Destination -->
+                
 
-        <%--<div id="map" style="height: 900px; width: 100%;"></div>--%>
-        <div id="viewDiv" style="height: 900px; width: 100%;">></div>
+        <div id="viewDiv" style="height: 700px; width: 100%;"></div>
 
         <button id="AntiqueShops" onclick="GetAntiqueShops()" type="button">Antique Shops</button>
         <button id="CemeteryandFuneralHomes" onclick="GetCemetery()" type="button">Cemetery and Funeral Homes</button>

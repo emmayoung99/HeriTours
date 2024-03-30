@@ -3,6 +3,9 @@ Version     Date            Coder       Comments
 1.0.0       2024-03-27      AGibbs      Initial. Converted from googleAPI to ArcGIS functions, add current location function, clear map function,
 1.0.1       2024-03-28      TBaxter     Added Popup content
 1.0.2       2024-03-29      AGibbs      Added scale bar and compass and frame constraint
+2.0.0       2024-03-30      TBaxter     Added Route. removed click event and changed to combo box (so it would only use visible site coordinates)
+                                        Editd ClearMap function to include combo boxes and route components, Added Current location to combo box
+                                        Route currently only allows for single destination. 
 
 
 */
@@ -10,9 +13,9 @@ Version     Date            Coder       Comments
 
 require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/Locate", "esri/widgets/ScaleBar",
     "esri/widgets/Compass", "esri/layers/GeoJSONLayer", "esri/rest/route", "esri/rest/support/RouteParameters", "esri/rest/support/FeatureSet", "esri/layers/FeatureLayer"],
-    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, ScaleBar, Compass, GeoJSONLayer, route, RouteParameters, FeatureSet, FeatureLayer) {
+    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, ScaleBar, Compass, GeoJSONLayer, route, RouteParameters, FeatureSet) {
 
-        esriConfig.apiKey = "AAPKb9ba5b70acaf4564beb06aec117188cd9URpR3n5paDTjcdXIRS8mmifpBaPFoboHHsoscJskwOXRXBtJGQntMsKlnRjVBAb";
+        esriConfig.apiKey = "AAPK2814bdda61534a3aa9df296ba41b7c00KDJxD9KRkEhwMLrd-lIzZd5c_PoyiTb81_inphNdo5Q4XEQbluYCNr15smMhFbtD";
 
         const map = new Map({
             basemap: "arcgis/streets-relief"
@@ -28,11 +31,9 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             }
         });
 
-
         /*  constrain map view to Hamilton*/
         view.when(() => {
-            view.constraints.minScale = view.scale;
-            
+            view.constraints.minScale = view.scale;           
         });
 
         /*add scalebar*/
@@ -45,7 +46,6 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         const compassWidget = new Compass({
             view: view
         });
-
         
         view.ui.add(compassWidget, "top-left");
 
@@ -54,14 +54,13 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             view: view,
             useHeadingEnabled: false,
             goToOverride: function (view, options) {
+                //AddSelLoc(options.target.geometry.point, "Current Location"); //uses current location, but doesn't have the coordinates yet. 
                 options.target.scale = 1500;
                 return view.goTo(options.target);
             }
         });
         view.ui.add(locate, "top-left");
-
-      
-
+              
         const graphicsLayer = new GraphicsLayer();
         map.add(graphicsLayer);
 
@@ -71,8 +70,12 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         function onError(result) { alert("Error on Coordinate Entry"); }
 
 
+        //needed for creating routes
+        var pointz=[];
+        var pointzpos = 0;
 
         function PresentData(TheData) {
+
             for (let i = 0; i < TheData.length; ++i) {
                 let tempArray = TheData[i].split("|");
 
@@ -81,6 +84,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
                     longitude: parseFloat(tempArray[2]),
                     latitude: parseFloat(tempArray[1])
                 };
+                                
 
                 let simpleMarkerSymbol = {
                     type: "simple-marker",
@@ -93,7 +97,9 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
                 };
 
                 //4=streetNo1, 5=StreetName, 6=Community, 
-                let address = ('Address: ' + tempArray[4] + ' ' + tempArray[5] + ', ' + tempArray[6])
+                let address = ('Address: ' + tempArray[4] + ' ' + tempArray[5] + ', ' + tempArray[6]);
+
+                AddSelLoc(point, tempArray[3]);
 
                 let popupTemplate = {
                     title: tempArray[3],                   
@@ -109,145 +115,46 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             }
 
         }
+        //allows for the current location to be an option in the route. 
+            //currently doesnt quite work when used.
+        function AddSelLoc(point, name) {
+            select1 = document.getElementById("SelOrig");
+            select2 = document.getElementById("SelDes");
+            pointz[pointzpos] = point;
+            var opt1 = document.createElement('option');
+            opt1.value = pointzpos;
+            opt1.innerHTML = name;//show name in box
+            select1.appendChild(opt1);
 
-
-
-        function GetResidences() {
-
-            let Message = "Residences";
-
-            PageMethods.GetData(Message, onSuccess, onError);
+            var opt2 = document.createElement('option');
+            opt2.value = pointzpos;
+            opt2.innerHTML = name;
+            select2.appendChild(opt2);
+            pointzpos += 1;//move to next element
         }
-        document.getElementById("Residences").addEventListener("click", GetResidences);
 
 
-        function GetFarms() {
+        //MAIN ROUTE CODE
+        const routeUrl =
+            "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+       
+        //populates combobox
+        function changeRoute() {
+            select1 = document.getElementById("SelOrig");
+            select2 = document.getElementById("SelDes");
+            mapmyroute(pointz[select1.value], pointz[select2.value]);
 
-            let Message = "Farms";
-
-            PageMethods.GetData(Message, onSuccess, onError);
         }
-        document.getElementById("Farms").addEventListener("click", GetFarms);
+        document.getElementById("SelOrig").addEventListener("change", changeRoute);
+        document.getElementById("SelDes").addEventListener("change", changeRoute);
 
-
-        function GetSchools() {
-
-            let Message = "Schools";
-
-            PageMethods.GetData(Message, onSuccess, onError);
+        //uses combo box to create a route of 2 locations
+        function mapmyroute(orig, dest) {
+            view.graphics.removeAll();
+            addGraphic("origin", orig);
+            addGraphic("destination", dest);
+            getRoute();
         }
-        document.getElementById("Schools").addEventListener("click", GetSchools);
-
-
-        function GetChurches() {
-
-            let Message = "Churches";
-
-            PageMethods.GetData(Message, onSuccess, onError);
-        }
-        document.getElementById("Churches").addEventListener("click", GetChurches);
-
-
-        function GetAntiqueShops() {
-
-            let Message = "AntiqueShops";
-
-            PageMethods.GetData(Message, onSuccess, onError);
-        }
-        document.getElementById("AntiqueShops").addEventListener("click", GetAntiqueShops);
-
-
-        function GetTheatres() {
-
-            let Message = "Theatres";
-
-            PageMethods.GetData(Message, onSuccess, onError);
-        }
-        document.getElementById("Theatres").addEventListener("click", GetTheatres);
-
-
-        function GetParks() {
-
-            let Message = "ParkandGardens";
-
-            PageMethods.GetData(Message, onSuccess, onError);
-        }
-        document.getElementById("ParkandGardens").addEventListener("click", GetParks);
-
-
-        function GetCemetery() {
-
-            let Message = "CemeteryandFuneralHomes";
-
-            PageMethods.GetData(Message, onSuccess, onError);
-        }
-        document.getElementById("CemeteryandFuneralHomes").addEventListener("click", GetCemetery);
-
-
-        function GetHospitals() {
-
-            let Message = "Hospitals";
-
-            PageMethods.GetData(Message, onSuccess, onError);
-        }
-        document.getElementById("Hospitals").addEventListener("click", GetHospitals);
-
-
-        function GetMuseums() {
-
-            let Message = "Museums";
-
-            PageMethods.GetData(Message, onSuccess, onError);
-        }
-        document.getElementById("Museums").addEventListener("click", GetMuseums);
-
-
-        function GetOther() {
-
-            let Message = "Other";
-
-            PageMethods.GetData(Message, onSuccess, onError);
-        }
-        document.getElementById("Other").addEventListener("click", GetOther);
-
-        function ClearMap() {
-            graphicsLayer.removeAll();
-        }
-        document.getElementById("Clear").addEventListener("click", ClearMap);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* create your route???*/
-        const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
-
-        view.on("click", function (event) {
-
-            if (view.graphics.length === 0) {
-                addGraphic("origin", event.mapPoint);
-                }
-                else if (view.graphics.length === 1) {
-                    addGraphic("destination", event.mapPoint);
-
-                    getRoute(); // Call the route service
-
-                 }
-                    else {
-                    view.graphics.removeAll();
-                    addGraphic("origin", event.mapPoint);
-                    }
-
-        });
 
         function addGraphic(type, point) {
             const graphic = new Graphic({
@@ -260,7 +167,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             });
             view.graphics.add(graphic);
         }
-
+        
         function getRoute() {
             const routeParams = new RouteParameters({
                 stops: new FeatureSet({
@@ -299,7 +206,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
                         view.ui.empty("top-right");
                         view.ui.add(directions, "top-right");
-
+                        
                     }
 
                 })
@@ -308,9 +215,107 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
                     console.log(error);
                 })
 
-            /*define stops for route using a collection of stops*/
-
-
         }
+
+
+        //GET HERITAGE SITE TYPES
+        function GetResidences() {
+
+            let Message = "Residences";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("Residences").addEventListener("click", GetResidences);
+
+        function GetFarms() {
+
+            let Message = "Farms";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("Farms").addEventListener("click", GetFarms);
+
+        function GetSchools() {
+
+            let Message = "Schools";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("Schools").addEventListener("click", GetSchools);
+
+        function GetChurches() {
+
+            let Message = "Churches";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("Churches").addEventListener("click", GetChurches);
+
+        function GetAntiqueShops() {
+
+            let Message = "AntiqueShops";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("AntiqueShops").addEventListener("click", GetAntiqueShops);
+
+        function GetTheatres() {
+
+            let Message = "Theatres";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("Theatres").addEventListener("click", GetTheatres);
+
+        function GetParks() {
+
+            let Message = "ParkandGardens";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("ParkandGardens").addEventListener("click", GetParks);
+
+        function GetCemetery() {
+
+            let Message = "CemeteryandFuneralHomes";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("CemeteryandFuneralHomes").addEventListener("click", GetCemetery);
+
+        function GetHospitals() {
+
+            let Message = "Hospitals";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("Hospitals").addEventListener("click", GetHospitals);
+
+        function GetMuseums() {
+
+            let Message = "Museums";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("Museums").addEventListener("click", GetMuseums);
+
+        function GetOther() {
+
+            let Message = "Other";
+
+            PageMethods.GetData(Message, onSuccess, onError);
+        }
+        document.getElementById("Other").addEventListener("click", GetOther);
+
+        function ClearMap() {
+            graphicsLayer.removeAll();
+            select1 = document.getElementById("SelOrig"); //needed?
+            select2 = document.getElementById("SelDes");
+            while (select1.options.length) select1.options.remove(0); //clears combo box
+            while (select2.options.length) select2.options.remove(0);
+            view.graphics.removeAll();//remove line
+            view.ui.empty("top-right");//remove direction box
+        }
+        document.getElementById("Clear").addEventListener("click", ClearMap);
 
 });
