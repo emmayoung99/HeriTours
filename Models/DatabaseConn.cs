@@ -25,6 +25,7 @@ Version     Date        Coder     Comments
 1.3.1       2024-03-20  HMusni    Added the method GetHeritageTypes to read from the database to generate a list of heritage types
 1.3.2       2024-03-25  AGibbs    Added a connection to tbl_Community to get community polygons from sql
 1.3.3       2024-03-28  TBaxter   Added Address variables into GetMarkers and reworked popup to include content
+1.4.0       2024-03-30  TBaxter   Created GetCoordinates function to set up for creating routes
    
 */
 
@@ -44,8 +45,8 @@ namespace DatabaseConn
             List<String> Markers = new List<string>();
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            conn.ConnectionString = @"Server=DESKTOP-NFGHOG6;Database=DB_HeriTours;Trusted_Connection=Yes";
-            //conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            //conn.ConnectionString = @"Server=DESKTOP-NFGHOG6;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
 
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -69,8 +70,7 @@ namespace DatabaseConn
             List<String> HeritageTypes = new List<String>();
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            conn.ConnectionString = @"Server=DESKTOP-NFGHOG6;Database=DB_HeriTours;Trusted_Connection=Yes";
-            //conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
             {
                 SqlCommand cmd = new SqlCommand("SELECT Heritage_Type FROM tbl_Heritage_Type", conn);
                 conn.Open();
@@ -89,12 +89,36 @@ namespace DatabaseConn
         }
 
 
+        public List<String> GetCoordinates()
+        {
+            List<String> MarkerCoordinates = new List<String>();
+            SqlConnection conn = new SqlConnection();
+            //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
+            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+            {
+                SqlCommand cmd = new SqlCommand("SELECT Latitude, Longitude FROM tbl_HeritageSites", conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    MarkerCoordinates.Add(reader["Latitude"].ToString() + "|" + reader["Longitude"].ToString());
+                }
+
+                conn.Close();
+
+                return MarkerCoordinates;
+            }
+
+        }
+
+
         public List<String> GetPolys()
         {
             string query = "Select CommunityID, Linestring From tbl_Community";
             List<String> Polys = new List<string>();
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
 
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
