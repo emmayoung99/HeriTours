@@ -95,8 +95,8 @@
         <button id="Transit" onclick="getTransitLayer()" type="button">TRANSIT ROUTE</button>
         <button id="Traffic" onclick="getTrafficLayer()" type="button">TRAFFIC ROUTE</button>--%>
         
-        <input type="checkbox" id="Community" name="Community" />
-        <label for="Community">Community</label>
+        <%--<input type="checkbox" id="Community" name="Community" />
+        <label for="Community">Community</label>--%>
     
                
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true"></asp:ScriptManager>
