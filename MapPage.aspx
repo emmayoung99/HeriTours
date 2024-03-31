@@ -63,11 +63,11 @@
                         <a class="nav-link text-dark" href="History.aspx">History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="StartLoc.aspx">Start</a>
+                        <a class="nav-link text-dark" href="Index.aspx">Start</a>
                     </li>
-                    <li class="nav-item">
+                    <%--<li class="nav-item">
                         <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
-                    </li>
+                    </li>--%>
                 </ul>
             </div>
         </div>

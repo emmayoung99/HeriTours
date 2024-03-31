@@ -20,32 +20,36 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
     overflow: hidden; /* Clear floats */
     float: left;
-    display: flex; /* Use flexbox for layout */
+    display: flex; /* for layout */
 }
 
     /* Style for the heading */
     .left-hst-text h2 {
         color: orange;
+        text-align: left; /* Align heading to the left */
     }
 
     /* Style for the paragraph */
     .left-hst-text p {
         color: black;
+        float: left;
+        text-align: left;
+        max-width: 50%;
     }
 
     /* Style for the image within the left text box */
-    .left-hst-text img {
+    .left-hst-text .image img {
         max-width: 40%; /* Limit the width of the image */
-        margin-left: 20px; /* Adjust as needed for spacing */
+        min-width: 20%;
+        min-height: 10%;
+        margin-left: 10px; /* To keep it away from the text */
+        margin-right: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 4px solid orange; /* Orange border */
+        border-radius: 10px; /* Rounded corners */
+        float: right;
     }
-
-/* CURRENTLY COMMENTED OUT BECAUSE IMAGE KEEPS SHOWING UP BELOW THE TEXT-------------------*/
-/* Style for the image floated to the right */
-/*.image-right {
-    float: right;*/ /* Float the image to the right */
-    /*margin-left: 20px;*/ /* Adjust as needed for spacing */
-    /*max-width: 40%;*/ /* Limit the width of the image */
-/*}*/
 
 /* Style for the right text box */
 .right-hst-text {
@@ -55,12 +59,11 @@ body {
     margin-top: 20px;
     margin-right: 10px;
     border-radius: 10px; /* Rounded corners */
-    width: calc(60% - 40px);
+    width: auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
     overflow: hidden; /* Clear floats */
-    text-align: right; /* Align text and heading to the right */
     float: right;
-    height: auto;
+    display: flex; /* For layout */
 }
 
     /* Style for the heading */
@@ -72,6 +75,31 @@ body {
     /* Style for the paragraph */
     .right-hst-text p {
         color: black;
-        text-align: right; /* Align paragraph text to the right */
+        float: right;
+        text-align: right;
+        max-width: 50%;
     }
 
+    /* Style for the image within the right text box */
+    .right-hst-text .image img {
+        max-width: 40%; /* Limit the width of the image */
+        min-width: 20%;
+        min-height: 10%;
+        max-height: 30%
+        margin-right: 10px; /* To keep it away from the text */
+        margin-left: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 4px solid orange; /* Orange border */
+        border-radius: 10px; /* Rounded corners */
+        float: left;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 50%;
+        padding: 5px;
+    }
