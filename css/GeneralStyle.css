@@ -17,6 +17,14 @@ Social media still needs logo images
 header {
     background-color: darkorange;
 }
+
+/* NOT WORKING! HAS NO AFFECT ON THE NAVBAR LOGO NEEDS CORRECTING, HEIGHT IS INLINE FOR NOW */
+/*.navbar-logo {*/
+/*    width: 40px; 
+    height: auto; */
+    /*margin-right: 10px; 
+}*/
+
 /* Body styling */
 body {
     background-color: beige;
@@ -120,7 +128,7 @@ footer {
 }
 
 /*Social Media-----------------------------------------------------------------------------------*/
-.sticky-social-bar {
+/*.sticky-social-bar {
     padding: 0;
     margin: 0;
     top: 50%;
@@ -193,7 +201,7 @@ footer {
             .sticky-social-bar .social-icon:hover > a {
                 color: inherit;
                 background-color: inherit;
-            }
+            }*/
 
 /*Styling for the accordian menu ------------------------------------------------*/
 #Accordian {
