@@ -3,8 +3,8 @@ Version     Date            Coder       Comments
 1.0.0       2024-03-27      AGibbs      Initial. Converted from googleAPI to ArcGIS functions, add current location function, clear map function,
 1.0.1       2024-03-28      TBaxter     Added Popup content
 1.0.2       2024-03-29      AGibbs      Added scale bar and compass and frame constraint, bike, transit and buildings layers
-1.0.3       2024-03-30      AGibbs      Styled feature layers and added a legend
 1.0.2       2024-03-29      AGibbs      Added scale bar and compass and frame constraint
+1.0.3       2024-03-30      AGibbs      Styled feature layers and added a legend
 2.0.0       2024-03-30      TBaxter     Added Route. removed click event and changed to combo box (so it would only use visible site coordinates)
                                         Editd ClearMap function to include combo boxes and route components, Added Current location to combo box
                                         Route currently only allows for single destination. 
@@ -31,11 +31,11 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
         //};
 
-        const buildings = new FeatureLayer({          
-            url: "https://services.arcgis.com/rYz782eMbySr2srL/arcgis/rest/services/Buildings/FeatureServer/8",
-            title: "Buildings",
-            /*renderer: buildingRender*/
-        });
+        //const buildings = new FeatureLayer({          
+        //    url: "https://services.arcgis.com/rYz782eMbySr2srL/arcgis/rest/services/Buildings/FeatureServer/8",
+        //    title: "Buildings",
+        //    /*renderer: buildingRender*/
+        //});
 
 
         
@@ -146,7 +146,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
         const map = new Map({
             basemap: "arcgis/streets-relief",
-            layers: [transit, bike, buildings, trails],
+           // layers: [transit, bike, buildings, trails],
         });
 
         const view = new MapView({
