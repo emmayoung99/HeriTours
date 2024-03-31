@@ -40,7 +40,7 @@ body {
     /* Style for the image within the left text box */
     .left-hst-text .image img {
         max-width: 40%; /* Limit the width of the image */
-        min-width: 20%;
+        min-width: 30%;
         min-height: 10%;
         margin-left: 10px; /* To keep it away from the text */
         margin-right: 10px;
@@ -77,15 +77,15 @@ body {
         color: black;
         float: right;
         text-align: right;
-        max-width: 50%;
+        max-width: 60%;
     }
 
     /* Style for the image within the right text box */
     .right-hst-text .image img {
-        max-width: 40%; /* Limit the width of the image */
-        min-width: 20%;
+        max-width: 20%; /* Limit the width of the image */
+        min-width: 10%;
         min-height: 10%;
-        max-height: 30%
+        max-height: 30%;
         margin-right: 10px; /* To keep it away from the text */
         margin-left: 10px;
         margin-top: 20px;

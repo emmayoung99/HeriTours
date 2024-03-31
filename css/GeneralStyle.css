@@ -20,6 +20,10 @@ header {
 /* Body styling */
 body {
     background-color: beige;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 /* Index page body styling */
 #bodyI { /*overwrite body for Index only*/
@@ -33,6 +37,13 @@ body {
 /* Footer styling */
 footer {
     background-color: darkorange;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 50px;
 }
 
 

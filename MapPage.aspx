@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MapPage.aspx.cs" Inherits="HeriTours_4._0.MapPage" %>
 
-<!--Version Date        Coder       Comments
+<!--
+Version Date        Coder       Comments
 1.0.1   2024-02-01  TBaxter     Initial. Added bootstrap, InfoCard, map html and CSS links just to get it to show up
 1.0.2   2024-02-02  TBaxter     added nav bar with the intention to move all html related files into a ASP.NET file
 1.1.0   2024-02-08  TBaxter     Moved to asp.core
@@ -17,6 +18,8 @@
 1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
 1.4.1   2024-03-27  TBaxter     Added Buttons.css link
 1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
+1.4.3   2024-03-30  EYOUNG      Added footer.
+
 -->
 
 <!DOCTYPE html>
@@ -48,35 +51,37 @@
 <body>
 
     <form id="form1" runat="server">
-      
-<header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-orange border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">HeriTours</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="History.aspx">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="Index.aspx">Start</a>
-                    </li>
-                    <%--<li class="nav-item">
+
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-light bg-orange border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">HeriTours</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="History.aspx">History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="Index.aspx">Start</a>
+                            </li>
+                            <%--<li class="nav-item">
                         <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
                     </li>--%>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
         <!-- Combo boxes for route. no styling at this time -->
-        <select id="SelOrig" class="form-select" ></select> <!-- Start -->
-        <select id="SelDes" class="form-select" ></select> <!-- Destination -->
-                
+        <select id="SelOrig" class="form-select"></select>
+        <!-- Start -->
+        <select id="SelDes" class="form-select"></select>
+        <!-- Destination -->
+
 
         <div id="viewDiv" style="height: 700px; width: 100%;"></div>
 
@@ -98,15 +103,22 @@
         <%--<button id="Bike" onclick="getBikeLayer()" type="button">BIKE ROUTE</button>
         <button id="Transit" onclick="getTransitLayer()" type="button">TRANSIT ROUTE</button>
         <button id="Traffic" onclick="getTrafficLayer()" type="button">TRAFFIC ROUTE</button>--%>
-        
+
         <input type="checkbox" id="Community" name="Community" />
         <label for="Community">Community</label>
-    
-               
+
+
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true"></asp:ScriptManager>
         <%--<script src="js/GoogleMap.js"></script>--%>
         <%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6haxPnf_GlOOJLMl4XX-_y9id7NBzh8&callback=initMap"
             async defer></script>--%>
     </form>
 </body>
+
 </html>
+
+<footer>
+    <div class="container">
+        &copy; <%= DateTime.Now.Year %> - HeriTours - <a href="/Privacy.aspx">Privacy</a>
+    </div>
+</footer>
