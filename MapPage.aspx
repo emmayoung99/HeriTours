@@ -88,6 +88,7 @@ Version Date        Coder       Comments
             <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
         </div>
 
+       
         <div class="container">
             <h5><b>Step 1: Pick A Heritage Site Type</b></h5>
             <button id="AntiqueShops" onclick="GetAntiqueShops()" type="button">Antique Shops</button>
@@ -120,6 +121,7 @@ Version Date        Coder       Comments
         </div>
         <br />
        
+           <div id="viewDiv" style="height: 900px; width: 100%;">></div>
 
 
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true"></asp:ScriptManager>
