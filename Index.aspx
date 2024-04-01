@@ -2,16 +2,18 @@
 
 <!DOCTYPE html>
 
-<!--Version     Date            Coder      Comments
-    1.0.1       2024-02-01      TBaxter    Initial. Added bootstrap, InfoCard, map html and CSS links just to get it to show up
-    1.0.2       2024-02-02      TBaxter    added nav bar with the intention to move all html related files into a ASP.NET file
-    1.1.0       2024-02-08      TBaxter    moved to asp.core (ASP.NET Web App (.NET Framework) wasn't an option
-    1.1.1       2024-02-17      TBaxter    fixed .js and .css links
-    1.2.0       2024-02-19      TBaxter    added timestamp, image, button that also links to page2
-    1.2.1       2024-03-08      EYOUNG     Modified structure and added more comments
-    1.3.0       2024-03-13      HMusni     Migrated from cshtml to aspx solution. Updated href links to new web pages and css stylesheets.
-    1.3.1       2021-03-30      EYOUNG     Button now jumps to MapPage as we have decided to abandon ChooseLoc, StartLoc and the Selection as this will all be done directly on MapPage
-    1.4.3       2024-03-31      EYOUNG     Added footer, needs to be modified a it won't stick to bottom of the view
+<!--Version     Date        Coder       Comments
+1.0.1       2024-02-01      TBaxter     Initial. Added bootstrap, InfoCard, map html and CSS links just to get it to show up
+1.0.2       2024-02-02      TBaxter     added nav bar with the intention to move all html related files into a ASP.NET file
+1.1.0       2024-02-08      TBaxter     moved to asp.core (ASP.NET Web App (.NET Framework) wasn't an option
+1.1.1       2024-02-17      TBaxter     fixed .js and .css links
+1.2.0       2024-02-19      TBaxter     added timestamp, image, button that also links to page2
+1.2.1       2024-03-08      EYoung      Modified structure and added more comments
+1.3.0       2024-03-13      HMusni      Migrated from cshtml to aspx solution. Updated href links to new web pages and css stylesheets.
+1.3.1       2021-03-30      EYoung      Button now jumps to MapPage as we have decided to abandon ChooseLoc, StartLoc and the Selection as this will all be done directly on MapPage
+1.4.3       2024-03-31      EYoung      Added footer, needs to be modified a it won't stick to bottom of the view
+1.4.4       2024-03-31      TBaxter     Removed StartLoc page from code
+
 -->
 
 

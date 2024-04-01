@@ -11,14 +11,16 @@ Version Date        Coder       Comments
                                 turned dropdown into simple list group. added button2
 1.2.2   2024-02-21  AGibbs      Fixed map not loading (typo)
 1.2.3   2024-02-24  EYoung      Edited the css files
-1.2.4   2024-03-08  EYOUNG      Modified structure and added more comments
+1.2.4   2024-03-08  EYoung      Modified structure and added more comments
 1.2.5   2024-03-08  HMusni      Added in heritage site type buttons, ID functions connect to AddMarkers.js
 1.3.0   2024-03-13  HMusni      Migrated from cshtml to aspx solution. Reset the css and js relative paths.
 1.3.1   2024-03-19  HMusni      Added temporary buttons on the map page for the heritage and transportation layers to activate the onClick functions
 1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
 1.4.1   2024-03-27  TBaxter     Added Buttons.css link
 1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
-1.4.3   2024-03-30  EYOUNG      Added footer.
+1.4.3   2024-03-30  EYoung      Added footer.
+1.4.4   2024-03-31  TBaxter     Added labels for the combo boxes, moved the site buttons to be above the map
+
      
 
 -->
@@ -69,9 +71,6 @@ Version Date        Coder       Comments
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="History.aspx">History</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="Index.aspx">Start</a>
-                            </li>
                             <%--<li class="nav-item">
                         <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
                     </li>--%>
@@ -80,29 +79,45 @@ Version Date        Coder       Comments
                 </div>
             </nav>
         </header>
-        <!-- Combo boxes for route. no styling at this time -->
-        <select id="SelOrig" class="form-select"></select>
-        <!-- Start -->
-        <select id="SelDes" class="form-select"></select>
-        <!-- Destination -->
 
+        <div class="text-center">
+            <!-- Large Heading -->
+            <h1 class="display-4"><b>Create Your Tour</b></h1>
 
-        <div id="viewDiv" style="height: 700px; width: 100%;"></div>
-      
+            <!-- Display a message indicating that the page is under construction and show the timestamp -->
+            <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
+        </div>
 
-        <button id="AntiqueShops" onclick="GetAntiqueShops()" type="button">Antique Shops</button>
-        <button id="CemeteryandFuneralHomes" onclick="GetCemetery()" type="button">Cemetery and Funeral Homes</button>
-        <button id="Churches" onclick="GetChurches()" type="button">Churches</button>
-        <button id="Farms" onclick="GetFarms()" type="button">Farms</button>
-        <button id="Hospitals" onclick="GetHospitals()" type="button">Hospitals</button>
-        <button id="Museums" onclick="GetMuseums()" type="button">Museums</button>
-        <button id="ParkandGardens" onclick="GetParks()" type="button">Park and Gardens</button>
-        <button id="Residences" onclick="GetResidences()" type="button">Residences</button>
-        <button id="Schools" onclick="GetSchools()" type="button">Schools</button>
-        <button id="Theatres" onclick="GetTheatres()" type="button">Theatres</button>
-        <button id="Other" onclick="GetOther()" type="button">Other</button>
-        <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR MAP</b></button>
+        <div class="container">
+            <h5><b>Step 1: Pick A Heritage Site Type</b></h5>
+            <button id="AntiqueShops" onclick="GetAntiqueShops()" type="button">Antique Shops</button>
+            <button id="CemeteryandFuneralHomes" onclick="GetCemetery()" type="button">Cemetery and Funeral Homes</button>
+            <button id="Churches" onclick="GetChurches()" type="button">Churches</button>
+            <button id="Farms" onclick="GetFarms()" type="button">Farms</button>
+            <button id="Hospitals" onclick="GetHospitals()" type="button">Hospitals</button>
+            <button id="Museums" onclick="GetMuseums()" type="button">Museums</button>
+            <button id="ParkandGardens" onclick="GetParks()" type="button">Park and Gardens</button>
+            <button id="Residences" onclick="GetResidences()" type="button">Residences</button>
+            <button id="Schools" onclick="GetSchools()" type="button">Schools</button>
+            <button id="Theatres" onclick="GetTheatres()" type="button">Theatres</button>
+            <button id="Other" onclick="GetOther()" type="button">Other</button>
+            <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR MAP</b></button>
+        </div>
 
+        <!-- Combo boxes for picking locations in the route -->
+        <div class="container">
+            <h5><b>Step 2: Pick The Locations on Your Tour</b></h5>
+            <label for="SelOrig" class="col-sm-2 control-label"><b>Pick a Starting Location</b> </label>
+            <div class="col-sm-10">
+                <select id="SelOrig" class="form-select">
+                    <!-- Start -->
+                </select>
+                <label for="SelDes" class="col-sm-2 control-label"><b>Pick a Destination Location</b> </label>
+                <select id="SelDes" class="form-select">
+                    <!-- Destination -->
+                </select>
+            </div>
+        </div>
         <br />
        
 

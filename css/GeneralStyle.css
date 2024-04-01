@@ -6,17 +6,26 @@ Version Date        Coder       Comments
 2.0.1   2024-03-05  EYOUNG      Added css for user selection box
 3.0.0   2024-03-13  HMusni      Migrated from cshtml to aspx solution
 3.0.1   2024-03-22  TBaxter     Added more styling for accordian
+3.0.2   2024-03-31  TBaxter     Changed font of whole website, made text in header bigger
 
-aim is to turn markers into click events that cause the infoCard to pop-up
-added AdvancedMarkerElement const to begin making markers a click event
 Social media still needs logo images
 
 */
 
+
 /* Header styling */
 header {
     background-color: darkorange;
+    font-family: 'Times New Roman', Times, serif;
 }
+    /*parts of the header*/
+    .navbar-brand{
+        font-size: 35px;
+        margin-left: 10px;
+    }
+    .nav-item{
+        font-size: 20px;
+    }
 
 /* NOT WORKING! HAS NO AFFECT ON THE NAVBAR LOGO NEEDS CORRECTING, HEIGHT IS INLINE FOR NOW */
 /*.navbar-logo {*/
@@ -32,15 +41,18 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    font-family: 'Times New Roman', Times, serif;
 }
 /* Index page body styling */
 #bodyI { /*overwrite body for Index only*/
     background-image: url(img/Hamilton.jpg);
     background-color: beige;
+    font-family: 'Times New Roman', Times, serif;
 }
 /* Secondary body styling */
 #body2 {
     margin: 10%;
+    font-family: 'Times New Roman', Times, serif;
 }
 /* Footer styling */
 footer {
@@ -52,13 +64,14 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-top: 50px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 
 /*Styling for buttons --------------------------------------------------------*/
 .button1 {
     background-color: darkorange;
-    opacity: 0.8;
+    opacity: 0.95;
     color: black;
     padding: 14px 25px 14px 25px;
     text-align: center;
@@ -69,12 +82,13 @@ footer {
     position: fixed;
     top: 50%;
     left: 44%;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     .button1:hover {
         background-color: darkgoldenrod;
         color: black;
-        opacity: 0.4;
+        opacity: 0.6;
     }
 
 
@@ -89,6 +103,7 @@ footer {
     border-color: ThreeDDarkShadow;
     position: center;
     display: block;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     .button2:hover {
@@ -107,6 +122,7 @@ footer {
     border-style: double;
     border-radius: 50px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     .button3:hover {
@@ -125,6 +141,7 @@ footer {
     border-width: 0.3vw;
     margin-top: 20px;
     border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 /*Social Media-----------------------------------------------------------------------------------*/
@@ -203,7 +220,7 @@ footer {
                 background-color: inherit;
             }*/
 
-/*Styling for the accordian menu ------------------------------------------------*/
+/*Styling for the accordian menu ------------------------------------------------
 #Accordian {
     border-style: solid;
     border-color: darkorange;
@@ -211,7 +228,7 @@ footer {
     background-color: lightgrey;
     width: 80%;
     max-height: 200px;
-    margin: 0 auto; /* Made the menu centred */
+    margin: 0 auto; /* Made the menu centred 
     overflow: auto;
 }
 
@@ -232,3 +249,4 @@ footer {
     color: black !important;
     background-color: orange !important;    
 }
+*/
