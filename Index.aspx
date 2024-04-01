@@ -93,7 +93,7 @@
 </html>
 
 <footer>
-    <div class="container">
+    <div class="footer">
         &copy; <%= DateTime.Now.Year %> - HeriTours - <a href="/Privacy.aspx">Privacy</a>
     </div>
 </footer>

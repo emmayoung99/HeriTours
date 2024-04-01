@@ -19,6 +19,7 @@ Version Date        Coder       Comments
 1.4.1   2024-03-27  TBaxter     Added Buttons.css link
 1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
 1.4.3   2024-03-30  EYOUNG      Added footer.
+     
 
 -->
 
@@ -29,19 +30,19 @@ Version Date        Coder       Comments
     <title>Start Your Tour</title>
 
     <!-- Set the character set for the document -->
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     <!-- Map CSS -->
     <%--<link href="./css/MapStyle.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="./css/MapStyle.css" />
     <link rel="stylesheet" href="./css/Buttons.css" />
     <!-- Polyfill for Map -->
     <%--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>--%>
-    <link href="./css/GeneralStyle.css" rel="stylesheet">
+    <link href="./css/GeneralStyle.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css"/>
     <script src="https://js.arcgis.com/4.29/"></script>
     <script src="./js/ArcGISMap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -87,6 +88,7 @@ Version Date        Coder       Comments
 
 
         <div id="viewDiv" style="height: 700px; width: 100%;"></div>
+      
 
         <button id="AntiqueShops" onclick="GetAntiqueShops()" type="button">Antique Shops</button>
         <button id="CemeteryandFuneralHomes" onclick="GetCemetery()" type="button">Cemetery and Funeral Homes</button>
@@ -102,13 +104,7 @@ Version Date        Coder       Comments
         <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR MAP</b></button>
 
         <br />
-        <%--transportation layers to be replaced--%>
-        <%--<button id="Bike" onclick="getBikeLayer()" type="button">BIKE ROUTE</button>
-        <button id="Transit" onclick="getTransitLayer()" type="button">TRANSIT ROUTE</button>
-        <button id="Traffic" onclick="getTrafficLayer()" type="button">TRAFFIC ROUTE</button>--%>
-
-        <input type="checkbox" id="Community" name="Community" />
-        <label for="Community">Community</label>
+       
 
 
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true"></asp:ScriptManager>
@@ -116,6 +112,9 @@ Version Date        Coder       Comments
         <%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6haxPnf_GlOOJLMl4XX-_y9id7NBzh8&callback=initMap"
             async defer></script>--%>
     </form>
+   
+  
+
 </body>
 
 </html>

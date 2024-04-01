@@ -11,6 +11,7 @@ using DatabaseConn;
 Version     Date            Coder       Comments
 1.0.0       2024-03-16      HMusni      Initial.Added Page_Load and GetData models to retrieve and organize heritage type data.
 1.2.0       2024-03-25      AGibbs      Added a function to get community polygons 
+1.2.1       2024-03-31      AGibbs      Removed function to get community polygons 
 */
 
 
@@ -56,18 +57,7 @@ namespace HeriTours_4._0
         }
 
         
-        public static String[] GetPolygons(String TheMessage)
-        {
-            List<String> ModelPolys = new List<string>();
-
-            foreach (String value in ModelPolygons.FindAll(n => n.Contains(TheMessage)))
-            {
-                ModelPolys.Add(value);
-            }
-
-            return ModelPolys.ToArray();
-        }
-
+        
 
     }
 }
