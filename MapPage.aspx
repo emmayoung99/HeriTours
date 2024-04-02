@@ -18,7 +18,7 @@ Version Date        Coder       Comments
 1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
 1.4.1   2024-03-27  TBaxter     Added Buttons.css link
 1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
-1.4.3   2024-03-30  EYOUNG      Added footer.
+1.4.3   2024-03-30  EYOUNG      Added footer. Added logo to the navbar.
 
 -->
 
@@ -48,6 +48,7 @@ Version Date        Coder       Comments
 
 
 </head>
+
 <body>
 
     <form id="form1" runat="server">
@@ -79,6 +80,8 @@ Version Date        Coder       Comments
                 </div>
             </nav>
         </header>
+
+
         <!-- Combo boxes for route. no styling at this time -->
         <select id="SelOrig" class="form-select"></select>
         <!-- Start -->

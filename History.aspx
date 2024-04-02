@@ -9,7 +9,7 @@ Version     Date            Coder       Comments
 1.0.2       2024-03-21      EYOUNG      Completed migration to ASPX.
 1.0.3       2024-03-22      TBaxter     Changed body ID to match Index and show background image
 1.1.0       2024-03-30      EYOUNG      Removed body ID as I will be adding images. Fixed text.
-1.1.1       2024-03-31      EYOUNG      Corrected images during Clay's help session. Added footer.
+1.1.1       2024-03-31      EYOUNG      Corrected images during Clay's help session. Added footer. Added logo to the navbar.
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
