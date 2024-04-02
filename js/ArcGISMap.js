@@ -10,8 +10,10 @@ Version     Date            Coder       Comments
                                         Route currently only allows for single destination. 
 2.2.0       2024-03-31      AGibbs      Convert feature layers to checkbox (only visible when clicked), styled transit layer per individual route, filter some buildings out from buildings feature layer, add a home button to return to original extent
 2.3.0       2024-04-01      TBaxter     Added optional stops in AddSelLoc, created functions AddStop and RemoveStop, added to ClearMap
+2.3.1       2024-04-01      AGibbs      Changed legend to cards and collapsible widget
 
 *** Could add zoom to location of start of route when selected somehow
+***Points are duplicated when button is clicked more than once
 
 */
 
@@ -188,7 +190,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         const scalebar = new ScaleBar({
             view: view
         });
-        view.ui.add(scalebar, "bottom-left");
+        view.ui.add(scalebar, "bottom-right");
 
         /*add compass*/
         const compassWidget = new Compass({
@@ -252,12 +254,16 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         });
 
         /*add Legend to map*/
-        let legend = new Legend({
-            view: view,        
-                        
+        const legend = new Expand({
+            content: new Legend({
+                view: view,
+                style: "card"
+            }),
+            view: view,
+            expanded: true,
+            expandIcon: "key"
         });
-
-        view.ui.add(legend, "bottom-right");
+        view.ui.add(legend, "bottom-left");
 
 
         const graphicsLayer = new GraphicsLayer();

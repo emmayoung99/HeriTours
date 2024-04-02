@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Collections;
@@ -44,8 +43,8 @@ namespace DatabaseConn
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
             //conn.ConnectionString = @"Server=DESKTOP-NFGHOG6;Database=DB_HeriTours;Trusted_Connection=Yes";
-            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
-            //conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            //conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
 
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -70,8 +69,8 @@ namespace DatabaseConn
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
             //conn.ConnectionString = @"Server=DESKTOP-NFGHOG6;Database=DB_HeriTours;Trusted_Connection=Yes";
-            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
-            //conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            //conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
             {
                 SqlCommand cmd = new SqlCommand("SELECT Heritage_Type FROM tbl_Heritage_Type", conn);
                 conn.Open();
@@ -95,8 +94,8 @@ namespace DatabaseConn
             List<String> MarkerCoordinates = new List<String>();
             SqlConnection conn = new SqlConnection();
             //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
-            //conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            //conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
             {
                 SqlCommand cmd = new SqlCommand("SELECT Latitude, Longitude FROM tbl_HeritageSites", conn);
                 conn.Open();
