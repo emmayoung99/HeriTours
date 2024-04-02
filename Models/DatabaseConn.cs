@@ -24,7 +24,7 @@ Version     Date        Coder     Comments
 1.3.1       2024-03-20  HMusni    Added the method GetHeritageTypes to read from the database to generate a list of heritage types
 1.3.2       2024-03-25  AGibbs    Added a connection to tbl_Community to get community polygons from sql
 1.3.3       2024-03-28  TBaxter   Added Address variables into GetMarkers and reworked popup to include content
-1.4.0       2024-03-30  TBaxter   Created GetCoordinates function to set up for creating routes
+1.4.0       2024-03-30  TBaxter   Created GetCoordinates function to set up for creating routes //REMOVED BC NOT NEEDED on 04-02
 1.4.1       2024-03-31  AGibbs    Removed the GetPolygons function for creating community polys from database connection
    
 */
@@ -87,33 +87,6 @@ namespace DatabaseConn
             }
 
         }
-
-
-        public List<String> GetCoordinates()
-        {
-            List<String> MarkerCoordinates = new List<String>();
-            SqlConnection conn = new SqlConnection();
-            //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            //conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
-            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
-            {
-                SqlCommand cmd = new SqlCommand("SELECT Latitude, Longitude FROM tbl_HeritageSites", conn);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    MarkerCoordinates.Add(reader["Latitude"].ToString() + "|" + reader["Longitude"].ToString());
-                }
-
-                conn.Close();
-
-                return MarkerCoordinates;
-            }
-
-        }
-
-
-
+              
     }
 }
