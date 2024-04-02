@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +12,8 @@ using DatabaseConn;
 Version     Date            Coder       Comments
 1.0.0       2024-03-16      HMusni      Initial.Added Page_Load and GetData models to retrieve and organize heritage type data.
 1.2.0       2024-03-25      AGibbs      Added a function to get community polygons 
+1.2.1       2024-03-31      AGibbs      Removed function to get community polygons 
+1.2.1       2024-03-31      TBaxter     Added timestamp
 */
 
 
@@ -23,6 +26,9 @@ namespace HeriTours_4._0
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Creates the time stamp
+            string dateTime = DateTime.Now.ToString("d", new CultureInfo("en-US"));
+            Page.Items["TimeStamp"] = dateTime;
             DatabaseConn.DatabaseConn D = new DatabaseConn.DatabaseConn();
             List<String> HeritageTypes = new List<String>();
 
@@ -56,18 +62,7 @@ namespace HeriTours_4._0
         }
 
         
-        public static String[] GetPolygons(String TheMessage)
-        {
-            List<String> ModelPolys = new List<string>();
-
-            foreach (String value in ModelPolygons.FindAll(n => n.Contains(TheMessage)))
-            {
-                ModelPolys.Add(value);
-            }
-
-            return ModelPolys.ToArray();
-        }
-
+        
 
     }
 }

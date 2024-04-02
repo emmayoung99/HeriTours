@@ -1,8 +1,45 @@
 ﻿/* CSS Map1 FLOWERBOX
 Version Date        Coder      Comments
 1.0.1   2024-02-01  TBaxter    Initial. Made different so CLEAR MAP could be red
+1.1.0   2024-04-01  TBaxter    Added AddStop and RemoveStop
 */
 
+
+#RemoveStop {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+    #RemoveStop:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
+#AddStop {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+    #AddStop:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
 
 #AntiqueShops {
     background-color: darkorange;
@@ -13,6 +50,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
     #AntiqueShops:hover {
         background-color: darkgoldenrod;
@@ -29,6 +67,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #CemeteryandFuneralHomes:hover {
@@ -46,6 +85,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Churches:hover {
@@ -63,6 +103,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Farms:hover {
@@ -80,6 +121,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Hospitals:hover {
@@ -97,6 +139,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Museums:hover {
@@ -114,6 +157,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Other:hover {
@@ -131,6 +175,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #ParkandGardens:hover {
@@ -148,6 +193,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Residences:hover {
@@ -165,6 +211,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Schools:hover {
@@ -182,6 +229,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Clear:hover {
@@ -199,6 +247,7 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
 }
 
     #Theatres:hover {

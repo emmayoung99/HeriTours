@@ -21,11 +21,11 @@ Ainslee's Notes: functions need to be added to the accordian to save the user se
 <head runat="server">
     <title>Create Your Route</title>
     <!-- Set the character set for the document -->
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <!-- Include Bootstrap CSS from a CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     <!-- Include additional CSS for Map -->
-    <link href="./css/GeneralStyle.css" rel="stylesheet">
+    <link href="./css/GeneralStyle.css" rel="stylesheet"/>
 </head>
 <body>
     <form id="form1" runat="server">

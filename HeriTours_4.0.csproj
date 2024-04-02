@@ -80,7 +80,6 @@
     <Content Include="MapPage.aspx" />
     <Content Include="NavBar.ascx" />
     <Content Include="Selection.aspx" />
-    <Content Include="StartLoc.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -125,10 +124,6 @@
     </Compile>
     <Compile Include="Selection.aspx.designer.cs">
       <DependentUpon>Selection.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="StartLoc.aspx.cs">
-      <DependentUpon>StartLoc.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
