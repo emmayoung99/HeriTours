@@ -42,7 +42,10 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    font-family: 'Times New Roman', Times, serif;
+    /*font-family: 'Times New Roman', Times, serif;*/
+    font-family: "chandler-42-regular", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 /* Index page body styling */
 #bodyI { /*overwrite body for Index only*/

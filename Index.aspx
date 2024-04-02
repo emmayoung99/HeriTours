@@ -12,6 +12,7 @@
     1.3.0       2024-03-13      HMusni     Migrated from cshtml to aspx solution. Updated href links to new web pages and css stylesheets.
     1.3.1       2021-03-30      EYOUNG     Button now jumps to MapPage as we have decided to abandon ChooseLoc, StartLoc and the Selection as this will all be done directly on MapPage
     1.4.3       2024-03-31      EYOUNG     Added footer, needs to be modified a it won't stick to bottom of the view. Added logo to the navbar.
+    1.4.4       2024-03-31      TBaxter    Removed StartLoc page from code
 -->
 
 
@@ -29,6 +30,9 @@
     <!-- Polyfill for Map -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link href="./css/GeneralStyle.css" rel="stylesheet">
+    <!-- Links to Emma's Adobe cloud to access Adobe fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/uyv3jwq.css">
+
 </head>
 
 
@@ -57,12 +61,6 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="History.aspx">History</a>
                             </li>
-                            <%--<li class="nav-item">
-                                <a class="nav-link text-dark" href="StartLoc.aspx">Start</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
-                            </li>--%>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="MapPage.aspx">Start Your Tour</a>
                             </li>
