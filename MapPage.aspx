@@ -79,12 +79,8 @@ Version Date        Coder       Comments
                 </div>
             </nav>
         </header>
-        <!-- Combo boxes for route. no styling at this time -->
-        <select id="SelOrig" class="form-select"></select>
-        <!-- Start -->
-        <select id="SelDes" class="form-select"></select>
-        <!-- Destination -->
 
+        <div class="text-center">
             <!-- Display a message indicating that the page is under construction and show the timestamp -->
             <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
         </div>
