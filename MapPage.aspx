@@ -31,19 +31,19 @@ Version Date        Coder       Comments
     <title>Start Your Tour</title>
 
     <!-- Set the character set for the document -->
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <!-- Map CSS -->
     <%--<link href="./css/MapStyle.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="./css/MapStyle.css" />
     <link rel="stylesheet" href="./css/Buttons.css" />
     <!-- Polyfill for Map -->
     <%--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>--%>
-    <link href="./css/GeneralStyle.css" rel="stylesheet"/>
+    <link href="./css/GeneralStyle.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css"/>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.29/"></script>
     <script src="./js/ArcGISMap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -60,7 +60,7 @@ Version Date        Coder       Comments
                 <div class="container">
                     <a class="navbar-brand" asp-area="" asp-page="/Index">
                         <!-- The navbar-logo class in GeneralStyle css isn't affecting logo, needs to be correct but working inline for now -->
-                        <img src="/css/img/logo.png" alt="Logo" height="70" class="navbar-logo"/>
+                        <img src="/css/img/logo.png" alt="Logo" height="70" class="navbar-logo" />
                         HeriTours</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -85,67 +85,69 @@ Version Date        Coder       Comments
             <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
         </div>
 
-       
+
         <div id="routeCon" class="container">
             <h5><b>Step 1: Pick A Heritage Site Type</b></h5>
-            <button id="AntiqueShops" onclick="GetAntiqueShops()" type="button">Antique Shops</button>
-            <button id="CemeteryandFuneralHomes" onclick="GetCemetery()" type="button">Cemetery and Funeral Homes</button>
-            <button id="Churches" onclick="GetChurches()" type="button">Churches</button>
-            <button id="Farms" onclick="GetFarms()" type="button">Farms</button>
-            <button id="Hospitals" onclick="GetHospitals()" type="button">Hospitals</button>
-            <button id="Museums" onclick="GetMuseums()" type="button">Museums</button>
-            <button id="ParkandGardens" onclick="GetParks()" type="button">Park and Gardens</button>
-            <button id="Residences" onclick="GetResidences()" type="button">Residences</button>
-            <button id="Schools" onclick="GetSchools()" type="button">Schools</button>
-            <button id="Theatres" onclick="GetTheatres()" type="button">Theatres</button>
-            <button id="Other" onclick="GetOther()" type="button">Other</button>
+            <button class="location-button" id="AntiqueShops" onclick="toggleSelected('AntiqueShops')" type="button">Antique Shops</button>
+            <button class="location-button" id="CemeteryandFuneralHomes" onclick="toggleSelected('CemeteryandFuneralHomes')" type="button">Cemetery and Funeral Homes</button>
+            <button class="location-button" id="Churches" onclick="toggleSelected('Churches')" type="button">Churches</button>
+            <button class="location-button" id="Farms" onclick="toggleSelected('Farms')" type="button">Farms</button>
+            <button class="location-button" id="Hospitals" onclick="toggleSelected('Hospitals')" type="button">Hospitals</button>
+            <button class="location-button" id="Museums" onclick="toggleSelected('Museums')" type="button">Museums</button>
+            <button class="location-button" id="ParkandGardens" onclick="toggleSelected('ParkandGardens')" type="button">Park and Gardens</button>
+            <button class="location-button" id="Residences" onclick="toggleSelected('Residences')" type="button">Residences</button>
+            <button class="location-button" id="Schools" onclick="toggleSelected('Schools')" type="button">Schools</button>
+            <button class="location-button" id="Theatres" onclick="toggleSelected('Theatres')" type="button">Theatres</button>
+            <button class="location-button" id="Other" onclick="toggleSelected('Other')" type="button">Other</button>
             <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR MAP</b></button>
-       
 
-        <!-- Combo boxes for picking locations in the route -->
- 
+
+
+
+
+
+            <!-- Combo boxes for picking locations in the route -->
+
             <h5><b>Step 2: Pick The Locations on Your Tour</b></h5>
-            <div class="col-sm-10"> 
+            <div class="col-sm-10">
                 <label for="SelOrig" class="control-label"><b>Pick a Starting Location</b> </label>
                 <select id="SelOrig" class="form-select"></select><!-- Start -->
-                                
-                <select id="Stop2" style="display:none" class="form-select"></select><!-- mid stop -->                
-                <select id="Stop3"  style="display:none" class="form-select"></select><!-- mid stop -->
-                <select id="Stop4" style="display:none" class="form-select"></select><!-- mid stop -->                
-                <select id="Stop5"  style="display:none" class="form-select"></select><!-- mid stop -->
-                <select id="Stop6" style="display:none" class="form-select"></select><!-- mid stop -->                
-                <select id="Stop7"  style="display:none" class="form-select"></select><!-- mid stop -->
-                <select id="Stop8" style="display:none" class="form-select"></select><!-- mid stop -->                
-                <select id="Stop9"  style="display:none" class="form-select"></select><!-- mid stop -->
-                
+
+                <select id="Stop2" style="display: none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop3" style="display: none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop4" style="display: none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop5" style="display: none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop6" style="display: none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop7" style="display: none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop8" style="display: none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop9" style="display: none" class="form-select"></select><!-- mid stop -->
+
                 <label for="SelDes" class=" control-label"><b>Pick a Destination Location</b> </label>
                 <select id="SelDes" class="form-select"></select><!-- Destination -->
 
                 <!--button that when selected unhides another stop select box -->
                 <button id="AddStop" type="button"><b>Add Another Stop</b></button>
                 <button id="RemoveStop" type="button"><b>Remove Last Added Stop</b></button>
-                
+
             </div>
         </div>
         <br />
-       
-           <div id="viewDiv" style="height: 700px; width: 100%;"></div>
 
-     
+        <div id="viewDiv" style="height: 700px; width: 100%;"></div>
+
+
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true"></asp:ScriptManager>
-        <%--<script src="js/GoogleMap.js"></script>--%>
-        <%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6haxPnf_GlOOJLMl4XX-_y9id7NBzh8&callback=initMap"
-            async defer></script>--%>
+
     </form>
-   
-  
+
+    <script src="./js/Buttons.js"></script>
 
 </body>
 
 </html>
 
 <footer>
-    <div class="container" >
+    <div class="container">
         &copy; <%= DateTime.Now.Year %> - HeriTours
     </div>
 </footer>

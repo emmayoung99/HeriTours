@@ -5,7 +5,9 @@ Version Date        Coder      Comments
 */
 
 
-#RemoveStop {
+
+
+.location-button {
     background-color: darkorange;
     opacity: 0.8;
     color: black;
@@ -17,208 +19,16 @@ Version Date        Coder      Comments
     font-family: 'Times New Roman', Times, serif;
 }
 
-    #RemoveStop:hover {
+    .location-button:hover {
         background-color: darkgoldenrod;
         color: black;
         opacity: 0.4;
     }
 
-#AddStop {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #AddStop:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
+    .location-button.selected {
+        background-color: #FFA500; /* Darker orange color */
     }
 
-#AntiqueShops {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-    #AntiqueShops:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#CemeteryandFuneralHomes {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #CemeteryandFuneralHomes:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#Churches {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #Churches:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#Farms {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #Farms:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#Hospitals {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #Hospitals:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#Museums {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #Museums:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#Other {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #Other:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#ParkandGardens {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #ParkandGardens:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#Residences {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #Residences:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
-
-#Schools {
-    background-color: darkorange;
-    opacity: 0.8;
-    color: black;
-    text-align: center;
-    text-decoration: double;
-    border-style: double;
-    border-radius: 5px;
-    border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-    #Schools:hover {
-        background-color: darkgoldenrod;
-        color: black;
-        opacity: 0.4;
-    }
 
 #Clear {
     background-color: red;
@@ -238,7 +48,8 @@ Version Date        Coder      Comments
         opacity: 0.4;
     }
 
-#Theatres {
+
+#AddStop {
     background-color: darkorange;
     opacity: 0.8;
     color: black;
@@ -250,8 +61,27 @@ Version Date        Coder      Comments
     font-family: 'Times New Roman', Times, serif;
 }
 
-    #Theatres:hover {
+    #AddStop:hover {
         background-color: darkgoldenrod;
         color: black;
         opacity: 0.4;
     }
+
+#RemoveStop {
+    background-color: darkorange;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+    #RemoveStop:hover {
+        background-color: darkgoldenrod;
+        color: black;
+        opacity: 0.4;
+    }
+
