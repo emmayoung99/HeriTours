@@ -2,22 +2,23 @@
 Version     Date            Coder       Comments
 1.0.1       2024-03-15      EYOUNG      Initial.
 1.0.2       2024-03-22      TBaxter     Fixed float and width
+1.0.3       2024-04-02      EYOUNG      Linked to Adobe fonts, switched to vintage style Trilby font.
 
 */
 
-body {
-}
+/* Import the font stylesheets from Emma's Adobe Cloud */
+@import url("https://use.typekit.net/uyv3jwq.css");
+
 
 /* Style for the left text box */
 .left-hst-text {
     background-color: white;
-    border: 2px solid orange;
+    border: 4px solid orange;
     padding: 20px;
     margin-top: 20px;
- 
     border-radius: 10px; /* Rounded corners */
     width: 100%; /* Adjusted width */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, .2); /* Drop shadow */
     overflow: hidden; /* Clear floats */
     float: left;
     display: flex; /* for layout */
@@ -27,6 +28,9 @@ body {
     .left-hst-text h2 {
         color: orange;
         text-align: left; /* Align heading to the left */
+        font-family: "trilby", serif;
+        font-weight: 700;
+        font-style: normal;
     }
 
     /* Style for the paragraph */
@@ -54,13 +58,12 @@ body {
 /* Style for the right text box */
 .right-hst-text {
     background-color: white;
-    border: 2px solid orange;
+    border: 4px solid orange;
     padding: 20px;
     margin-top: 20px;
-
     border-radius: 10px; /* Rounded corners */
     width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, .2); /* Drop shadow */
     overflow: hidden; /* Clear floats */
     float: right;
     display: flex; /* For layout */
@@ -70,6 +73,9 @@ body {
     .right-hst-text h2 {
         color: orange;
         text-align: right; /* Align heading to the right */
+        font-family: "trilby", serif;
+        font-weight: 700;
+        font-style: normal;
     }
 
     /* Style for the paragraph */
