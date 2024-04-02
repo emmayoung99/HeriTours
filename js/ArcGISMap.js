@@ -12,6 +12,7 @@ Version     Date            Coder       Comments
 2.3.0       2024-04-01      TBaxter     Added optional stops in AddSelLoc, created functions AddStop and RemoveStop, added to ClearMap
 2.3.1       2024-04-01      AGibbs      Changed legend to cards and collapsible widget
 2.4.0       2024-04-01      AGibbs      Made buttons selectable only once to avoid duplicate points; refreshes with the clear map button
+2.4.1       2024-04-02      EYOUNG      Modified the ClearMap function. Buttons will now return to their default appearance on click.
 
 *** Could add zoom to location of start of route when selected somehow
 ***Points are duplicated when button is clicked more than once
@@ -618,6 +619,8 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         //if stop 2 visible, then add
 
         //GET HERITAGE SITE TYPES
+
+        // CLEAR THE MAP *******************************************************************************************************************
         function ClearMap() {
             graphicsLayer.removeAll();
             select1 = document.getElementById("SelOrig"); 
@@ -657,9 +660,19 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             enableHospitalsClick();
             enableMuseumsClick();
             enableOtherClick();
+
+            // Remove the "selected" class from all buttons, when the user uses the ClearMap function, the button colour will return to default
+            var buttons = document.querySelectorAll('.location-button');
+            buttons.forEach(function (button) {
+                button.classList.remove('selected');
+            });
         }
         document.getElementById("Clear").addEventListener("click", ClearMap);
 
+
+
+
+        // ALL LOCATION BUTTONS ***************************************************************************************************
         /*Residences*/
         function handleResidencesClick() {
             let Message = "Residences";
@@ -858,4 +871,16 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
 
     });
+
+// After the user clicks a button the first time, the button will be disabled an appear greyed out ********************************
+    // If the user would like to remove this selection, they will need to use the ClearMap
+function toggleSelected(buttonId) {
+    var button = document.getElementById(buttonId);
+    if (!button.classList.contains("selected")) {
+        button.classList.add("selected");
+        button.disabled = true; // Disable the button
+    }
+}
+
+
 

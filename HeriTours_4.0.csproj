@@ -74,6 +74,7 @@
     <Content Include="History.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="js\ArcGISMap.js" />
+    <Content Include="js\Buttons.js" />
     <Content Include="js\GoogleMap.js" />
     <Content Include="js\SelectionFunctions.js" />
     <Content Include="MapPage.aspx" />

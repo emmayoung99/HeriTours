@@ -87,6 +87,33 @@ namespace DatabaseConn
             }
 
         }
-              
+
+
+        public List<String> GetCoordinates()
+        {
+            List<String> MarkerCoordinates = new List<String>();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
+            //conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+            //conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            {
+                SqlCommand cmd = new SqlCommand("SELECT Latitude, Longitude FROM tbl_HeritageSites", conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    MarkerCoordinates.Add(reader["Latitude"].ToString() + "|" + reader["Longitude"].ToString());
+                }
+
+                conn.Close();
+
+                return MarkerCoordinates;
+            }
+
+        }
+
+
+
     }
 }
