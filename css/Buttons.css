@@ -1,14 +1,15 @@
 ﻿/* CSS Map1 FLOWERBOX
-Version Date        Coder      Comments
-1.0.1   2024-02-01  TBaxter    Initial. Made different so CLEAR MAP could be red
-1.1.0   2024-04-01  TBaxter    Added AddStop and RemoveStop
+Version     Date            Coder       Comments
+1.0.1       2024-02-01      TBaxter     Initial. Made different so CLEAR MAP could be red
+1.1.0       2024-04-01      TBaxter     Added AddStop and RemoveStop
+1.2.0       2024-04-02      EYOUNG      Changed button selection.
 */
 
 
 
 
 .location-button {
-    background-color: darkorange;
+    background-color: #ffa146;
     opacity: 0.8;
     color: black;
     text-align: center;
@@ -16,7 +17,9 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
     .location-button:hover {
@@ -26,8 +29,9 @@ Version Date        Coder      Comments
     }
 
     .location-button.selected {
-        background-color: #FFA500; /* Darker orange color */
+        background-color: rgba(255, 164, 70, 0.5); /* Darker orange color with 50% opacity */
     }
+
 
 
 #Clear {
@@ -39,7 +43,9 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
     #Clear:hover {
@@ -50,7 +56,7 @@ Version Date        Coder      Comments
 
 
 #AddStop {
-    background-color: darkorange;
+    background-color: #fcb25d;
     opacity: 0.8;
     color: black;
     text-align: center;
@@ -58,7 +64,9 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
     #AddStop:hover {
@@ -68,7 +76,7 @@ Version Date        Coder      Comments
     }
 
 #RemoveStop {
-    background-color: darkorange;
+    background-color: #fcb25d;
     opacity: 0.8;
     color: black;
     text-align: center;
@@ -76,7 +84,9 @@ Version Date        Coder      Comments
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
     #RemoveStop:hover {
