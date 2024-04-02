@@ -8,25 +8,34 @@ Version Date        Coder       Comments
 3.0.1   2024-03-22  TBaxter     Added more styling for accordian
 3.0.2   2024-03-31  TBaxter     Changed font of whole website, made text in header bigger
 3.0.3   2024-04-01  TBaxter     Added margins for route container sed on MapPage
+3.0.4   2024-04-02  EYOUNG      Linked to Adobe fonts, switched to vintage style Trilby font.
 
 Social media still needs logo images
 
 */
 
+/* Import the font stylesheets from Emma's Adobe Cloud */
+@import url("https://use.typekit.net/uyv3jwq.css");
+
 
 /* Header styling */
 header {
     background-color: darkorange;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal;
 }
     /*parts of the header*/
     .navbar-brand{
         font-size: 35px;
         margin-left: 10px;
     }
+
+
     .nav-item{
         font-size: 20px;
     }
+
 
 /* NOT WORKING! HAS NO AFFECT ON THE NAVBAR LOGO NEEDS CORRECTING, HEIGHT IS INLINE FOR NOW */
 /*.navbar-logo {*/
@@ -35,6 +44,8 @@ header {
     /*margin-right: 10px; 
 }*/
 
+
+
 /* Body styling */
 body {
     background-color: beige;
@@ -42,18 +53,31 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 /* Index page body styling */
 #bodyI { /*overwrite body for Index only*/
     background-image: url(img/Hamilton.jpg);
     background-color: beige;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal
 }
 /* Secondary body styling */
 #body2 {
     margin: 10%;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal
+}
+
+.text-center.bg-beige {
+    font-family: "trilby", serif;
+    font-weight: 700;
+    font-style: normal;
+    text-shadow: 6px 6px 2px rgba(0, 0, 0, .2);
 }
 /* Footer styling */
 footer {
@@ -65,7 +89,9 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-top: 50px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 700;
+    font-style: normal
 }
 
 #routeCon {
@@ -87,7 +113,10 @@ footer {
     position: fixed;
     top: 50%;
     left: 44%;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 700;
+    font-style: normal;
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, .1);
 }
 
     .button1:hover {
@@ -108,7 +137,9 @@ footer {
     border-color: ThreeDDarkShadow;
     position: center;
     display: block;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 700;
+    font-style: normal
 }
 
     .button2:hover {
@@ -127,7 +158,9 @@ footer {
     border-style: double;
     border-radius: 50px;
     border-color: ThreeDDarkShadow;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 700;
+    font-style: normal
 }
 
     .button3:hover {
@@ -146,7 +179,9 @@ footer {
     border-width: 0.3vw;
     margin-top: 20px;
     border-radius: 5px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "trilby", serif;
+    font-weight: 700;
+    font-style: normal
 }
 
 /*Social Media-----------------------------------------------------------------------------------*/

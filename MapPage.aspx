@@ -17,10 +17,8 @@ Version Date        Coder       Comments
 1.3.1   2024-03-19  HMusni      Added temporary buttons on the map page for the heritage and transportation layers to activate the onClick functions
 1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
 1.4.1   2024-03-27  TBaxter     Added Buttons.css link
-1.4.2   2024-03-30  TBaxter     Added Selection boxes for Route
-1.4.3   2024-03-30  EYoung      Added footer.
-1.4.4   2024-03-31  TBaxter     Added labels for the selection boxes, moved the site buttons to be above the map
-1.5.0   2024-04-01  TBaxter     Added hidden selection boxes, add/remove buttons
+1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
+1.4.3   2024-03-30  EYOUNG      Added footer.
 
      
 
@@ -52,6 +50,7 @@ Version Date        Coder       Comments
 
 
 </head>
+
 <body>
 
     <form id="form1" runat="server">
@@ -61,7 +60,7 @@ Version Date        Coder       Comments
                 <div class="container">
                     <a class="navbar-brand" asp-area="" asp-page="/Index">
                         <!-- The navbar-logo class in GeneralStyle css isn't affecting logo, needs to be correct but working inline for now -->
-                        <img src="/css/img/logo.png" alt="Logo" height="70px" class="navbar-logo">
+                        <img src="/css/img/logo.png" alt="Logo" height="70" class="navbar-logo"/>
                         HeriTours</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -80,10 +79,11 @@ Version Date        Coder       Comments
                 </div>
             </nav>
         </header>
-
-        <div class="text-center">
-            <!-- Large Heading -->
-            <h1 class="display-4"><b>Create Your Tour</b></h1>
+        <!-- Combo boxes for route. no styling at this time -->
+        <select id="SelOrig" class="form-select"></select>
+        <!-- Start -->
+        <select id="SelDes" class="form-select"></select>
+        <!-- Destination -->
 
             <!-- Display a message indicating that the page is under construction and show the timestamp -->
             <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>

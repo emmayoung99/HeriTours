@@ -49,7 +49,7 @@ Version     Date            Coder       Comments
     </header>
 
 
-    <div class="text-center">
+    <div class="text-center bg-beige">
         <h1 class="display-4"><b>History of the City</b></h1>
         <!-- Display a message indicating that the page is under construction and show the timestamp -->
         <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
