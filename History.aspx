@@ -10,11 +10,11 @@ Version     Date            Coder       Comments
 1.0.3       2024-03-22      TBaxter     Changed body ID to match Index and show background image
 1.1.0       2024-03-30      EYOUNG      Removed body ID as I will be adding images. Fixed text.
 1.1.1       2024-03-31      EYOUNG      Corrected images during Clay's help session. Added footer.
-1.1.2       2024-03-31      TBaxter     Turned text boxes into a container to create easy margins
+1.1.2       2024-03-31      TBaxter     Turned text boxes into a container to create easy margins, renamed nav links
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Welcome to HeriTours</title>
+    <title>History of Hamilton</title>
     <meta charset="utf-8" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link href="./css/GeneralStyle.css" rel="stylesheet" />
@@ -37,10 +37,10 @@ Version     Date            Coder       Comments
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="Index.aspx">Start</a>
+                            <a class="nav-link text-dark" href="Index.aspx">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="MapPage.aspx">Map</a>
+                            <a class="nav-link text-dark" href="MapPage.aspx">Start Your Tour</a>
                         </li>
                     </ul>
                 </div>

@@ -17,9 +17,10 @@ Version Date        Coder       Comments
 1.3.1   2024-03-19  HMusni      Added temporary buttons on the map page for the heritage and transportation layers to activate the onClick functions
 1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
 1.4.1   2024-03-27  TBaxter     Added Buttons.css link
-1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
+1.4.2   2024-03-30  TBaxter     Added Selection boxes for Route
 1.4.3   2024-03-30  EYoung      Added footer.
-1.4.4   2024-03-31  TBaxter     Added labels for the combo boxes, moved the site buttons to be above the map
+1.4.4   2024-03-31  TBaxter     Added labels for the selection boxes, moved the site buttons to be above the map
+1.5.0   2024-04-01  TBaxter     Added hidden selection boxes, add/remove buttons
 
      
 
@@ -89,7 +90,7 @@ Version Date        Coder       Comments
         </div>
 
        
-        <div class="container">
+        <div id="routeCon" class="container">
             <h5><b>Step 1: Pick A Heritage Site Type</b></h5>
             <button id="AntiqueShops" onclick="GetAntiqueShops()" type="button">Antique Shops</button>
             <button id="CemeteryandFuneralHomes" onclick="GetCemetery()" type="button">Cemetery and Funeral Homes</button>
@@ -103,27 +104,38 @@ Version Date        Coder       Comments
             <button id="Theatres" onclick="GetTheatres()" type="button">Theatres</button>
             <button id="Other" onclick="GetOther()" type="button">Other</button>
             <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR MAP</b></button>
-        </div>
+       
 
         <!-- Combo boxes for picking locations in the route -->
-        <div class="container">
+ 
             <h5><b>Step 2: Pick The Locations on Your Tour</b></h5>
-            <label for="SelOrig" class="col-sm-2 control-label"><b>Pick a Starting Location</b> </label>
-            <div class="col-sm-10">
-                <select id="SelOrig" class="form-select">
-                    <!-- Start -->
-                </select>
-                <label for="SelDes" class="col-sm-2 control-label"><b>Pick a Destination Location</b> </label>
-                <select id="SelDes" class="form-select">
-                    <!-- Destination -->
-                </select>
+            <div class="col-sm-10"> 
+                <label for="SelOrig" class="control-label"><b>Pick a Starting Location</b> </label>
+                <select id="SelOrig" class="form-select"></select><!-- Start -->
+                                
+                <select id="Stop2" style="display:none" class="form-select"></select><!-- mid stop -->                
+                <select id="Stop3"  style="display:none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop4" style="display:none" class="form-select"></select><!-- mid stop -->                
+                <select id="Stop5"  style="display:none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop6" style="display:none" class="form-select"></select><!-- mid stop -->                
+                <select id="Stop7"  style="display:none" class="form-select"></select><!-- mid stop -->
+                <select id="Stop8" style="display:none" class="form-select"></select><!-- mid stop -->                
+                <select id="Stop9"  style="display:none" class="form-select"></select><!-- mid stop -->
+                
+                <label for="SelDes" class=" control-label"><b>Pick a Destination Location</b> </label>
+                <select id="SelDes" class="form-select"></select><!-- Destination -->
+
+                <!--button that when selected unhides another stop select box -->
+                <button id="AddStop" type="button"><b>Add Another Stop</b></button>
+                <button id="RemoveStop" type="button"><b>Remove Last Added Stop</b></button>
+                
             </div>
         </div>
         <br />
        
-           <div id="viewDiv" style="height: 900px; width: 100%;">></div>
+           <div id="viewDiv" style="height: 700px; width: 100%;"></div>
 
-
+     
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true"></asp:ScriptManager>
         <%--<script src="js/GoogleMap.js"></script>--%>
         <%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX6haxPnf_GlOOJLMl4XX-_y9id7NBzh8&callback=initMap"
@@ -137,7 +149,7 @@ Version Date        Coder       Comments
 </html>
 
 <footer>
-    <div class="container">
-        &copy; <%= DateTime.Now.Year %> - HeriTours - <a href="/Privacy.aspx">Privacy</a>
+    <div class="container" >
+        &copy; <%= DateTime.Now.Year %> - HeriTours
     </div>
 </footer>

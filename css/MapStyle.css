@@ -10,46 +10,10 @@ Version Date        Coder      Comments
 /*current location map*/
 #viewDiv {
     /*display: inline-block;*/
-    margin-bottom: 1%;
+    margin-bottom: 2%;
     height: 600px;
     width: 100%;
     border-style: solid;
     border-color: darkorange;
     border-width: 3px;   
 }
-
-
-
-
-/*#map {
-    display: inline-block;
-    margin-bottom: 1%;
-    height: 600px;
-    width: 100%;
-    border-style: solid;
-    border-color: darkorange;
-    border-width: 3px;
-}
-
-#map1 {
-    margin: 5%;
-    height: 500px;
-    width: 40%;
-    left: 20px;
-    border-style: double;
-    border-color: aliceblue;
-    border-radius: 10px;
-    float: left;
-}
-
-#map2 {
-    margin: 5%;
-    height: 500px;
-    width: 40%;
-    left: 20px;
-    border-style: double;
-    border-color: aliceblue;
-    border-radius: 10px;
-    float: right;
-}
-*/

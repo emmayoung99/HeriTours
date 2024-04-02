@@ -7,6 +7,7 @@ Version Date        Coder       Comments
 3.0.0   2024-03-13  HMusni      Migrated from cshtml to aspx solution
 3.0.1   2024-03-22  TBaxter     Added more styling for accordian
 3.0.2   2024-03-31  TBaxter     Changed font of whole website, made text in header bigger
+3.0.3   2024-04-01  TBaxter     Added margins for route container sed on MapPage
 
 Social media still needs logo images
 
@@ -65,6 +66,10 @@ footer {
     padding: 10px 0;
     margin-top: 50px;
     font-family: 'Times New Roman', Times, serif;
+}
+
+#routeCon {
+    margin-left:25px;
 }
 
 

@@ -66,7 +66,7 @@
                                 <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
                             </li>--%>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="MapPage.aspx">Map</a>
+                                <a class="nav-link text-dark" href="MapPage.aspx">Start Your Tour</a>
                             </li>
                         </ul>
                     </div>
