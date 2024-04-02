@@ -11,6 +11,7 @@ Version     Date            Coder       Comments
 2.2.0       2024-03-31      AGibbs      Convert feature layers to checkbox (only visible when clicked), styled transit layer per individual route, filter some buildings out from buildings feature layer, add a home button to return to original extent
 2.3.0       2024-04-01      TBaxter     Added optional stops in AddSelLoc, created functions AddStop and RemoveStop, added to ClearMap
 2.3.1       2024-04-01      AGibbs      Changed legend to cards and collapsible widget
+2.4.0       2024-04-01      AGibbs      Made buttons selectable only once to avoid duplicate points; refreshes with the clear map button
 
 *** Could add zoom to location of start of route when selected somehow
 ***Points are duplicated when button is clicked more than once
@@ -20,8 +21,8 @@ Version     Date            Coder       Comments
 
 require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/Locate", "esri/widgets/Home", "esri/widgets/ScaleBar",
     "esri/widgets/Compass", "esri/widgets/Legend", "esri/rest/route", "esri/rest/support/RouteParameters", "esri/rest/support/FeatureSet", "esri/layers/FeatureLayer",
-    "esri/widgets/Expand", "esri/core/reactiveUtils", "esri/rest/support/Query"],
-    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, Home, ScaleBar, Compass, Legend, route, RouteParameters, FeatureSet, FeatureLayer, Expand, reactiveUtils, Query) {
+    "esri/widgets/Expand"],
+    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, Home, ScaleBar, Compass, Legend, route, RouteParameters, FeatureSet, FeatureLayer, Expand) {
 
         esriConfig.apiKey = "AAPK2814bdda61534a3aa9df296ba41b7c00KDJxD9KRkEhwMLrd-lIzZd5c_PoyiTb81_inphNdo5Q4XEQbluYCNr15smMhFbtD";
 
@@ -645,137 +646,216 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             view.ui.empty("top-right");//remove direction box
             pointzpos = 0; //stops blow up and resets it
             while (stops > 0) RemoveStop();
+            enableResidencesClick();
+            enableFarmsClick();
+            enableSchoolsClick();
+            enableChurchesClick();
+            enableAntiqueShopsClick();
+            enableTheatresClick();
+            enableParkandGardensClick();
+            enableCemeteryClick();
+            enableHospitalsClick();
+            enableMuseumsClick();
+            enableOtherClick();
         }
         document.getElementById("Clear").addEventListener("click", ClearMap);
 
-        function GetResidences() {
-
+        /*Residences*/
+        function handleResidencesClick() {
             let Message = "Residences";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableResidencesClick();
         }
-        document.getElementById("Residences").addEventListener("click", GetResidences);
 
-        function GetFarms() {
+        function disableResidencesClick() {
+            document.getElementById("Residences").removeEventListener("click", handleResidencesClick);
+        }
 
+        function enableResidencesClick() {
+            document.getElementById("Residences").addEventListener("click", handleResidencesClick);
+        }
+
+        enableResidencesClick();
+
+
+        /*Farms*/
+        function handleFarmsClick() {
             let Message = "Farms";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableFarmsClick();
         }
-        document.getElementById("Farms").addEventListener("click", GetFarms);
 
-        function GetSchools() {
+        function disableFarmsClick() {
+            document.getElementById("Farms").removeEventListener("click", handleFarmsClick);
+        }
 
+        function enableFarmsClick() {
+            document.getElementById("Farms").addEventListener("click", handleFarmsClick);
+        }
+
+        enableFarmsClick();
+
+        
+       /* Schools*/
+        function handleSchoolsClick() {
             let Message = "Schools";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableSchoolsClick();
         }
-        document.getElementById("Schools").addEventListener("click", GetSchools);
 
-        function GetChurches() {
+        function disableSchoolsClick() {
+            document.getElementById("Schools").removeEventListener("click", handleSchoolsClick);
+        }
 
+        function enableSchoolsClick() {
+            document.getElementById("Schools").addEventListener("click", handleSchoolsClick);
+        }
+
+        enableSchoolsClick();
+
+
+        /*Churches*/
+        function handleChurchesClick() {
             let Message = "Churches";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableChurchesClick();
         }
-        document.getElementById("Churches").addEventListener("click", GetChurches);
 
-        function GetAntiqueShops() {
+        function disableChurchesClick() {
+            document.getElementById("Churches").removeEventListener("click", handleChurchesClick);
+        }
 
+        function enableChurchesClick() {
+            document.getElementById("Churches").addEventListener("click", handleChurchesClick);
+        }
+
+        enableChurchesClick();
+
+
+        /*AntiqueShops*/
+        function handleAntiqueShopsClick() {
             let Message = "AntiqueShops";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableAntiqueShopsClick();
         }
-        document.getElementById("AntiqueShops").addEventListener("click", GetAntiqueShops);
 
-        function GetTheatres() {
+        function disableAntiqueShopsClick() {
+            document.getElementById("AntiqueShops").removeEventListener("click", handleAntiqueShopsClick);
+        }
 
+        function enableAntiqueShopsClick() {
+            document.getElementById("AntiqueShops").addEventListener("click", handleAntiqueShopsClick);
+        }
+
+        enableAntiqueShopsClick();
+
+
+      /*  Theatres*/
+        function handleTheatresClick() {
             let Message = "Theatres";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableTheatresClick();
         }
-        document.getElementById("Theatres").addEventListener("click", GetTheatres);
 
-        function GetParks() {
+        function disableTheatresClick() {
+            document.getElementById("Theatres").removeEventListener("click", handleTheatresClick);
+        }
 
+        function enableTheatresClick() {
+            document.getElementById("Theatres").addEventListener("click", handleTheatresClick);
+        }
+
+        enableTheatresClick();
+
+
+        /* Parks and Gardens*/
+        function handleParkandGardensClick() {
             let Message = "ParkandGardens";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableParkandGardensClick();
         }
-        document.getElementById("ParkandGardens").addEventListener("click", GetParks);
+      
+        function disableParkandGardensClick() {
+            document.getElementById("ParkandGardens").removeEventListener("click", handleParkandGardensClick);
+        }
 
-        function GetCemetery() {
+        function enableParkandGardensClick() {
+            document.getElementById("ParkandGardens").addEventListener("click", handleParkandGardensClick);
+        }
 
+        enableParkandGardensClick();
+
+       /* Cemetery and Funeral Homes*/
+        function handleCemeteryClick() {
             let Message = "CemeteryandFuneralHomes";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableCemeteryClick();
         }
-        document.getElementById("CemeteryandFuneralHomes").addEventListener("click", GetCemetery);
 
-        function GetHospitals() {
+        function disableCemeteryClick() {
+            document.getElementById("CemeteryandFuneralHomes").removeEventListener("click", handleCemeteryClick);
+        }
 
+        function enableCemeteryClick() {
+            document.getElementById("CemeteryandFuneralHomes").addEventListener("click", handleCemeteryClick);
+        }
+
+        enableCemeteryClick();
+
+
+
+      /*  Hospitals*/
+        function handleHospitalsClick() {
             let Message = "Hospitals";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableHospitalsClick();
         }
-        document.getElementById("Hospitals").addEventListener("click", GetHospitals);
 
-        function GetMuseums() {
+        function disableHospitalsClick() {
+            document.getElementById("Hospitals").removeEventListener("click", handleHospitalsClick);
+        }
 
+        function enableHospitalsClick() {
+            document.getElementById("Hospitals").addEventListener("click", handleHospitalsClick);
+        }
+
+        enableHospitalsClick();
+
+      /*  Museums*/
+        function handleMuseumsClick() {
             let Message = "Museums";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableMuseumsClick();
         }
-        document.getElementById("Museums").addEventListener("click", GetMuseums);
 
-        function GetOther() {
+        function disableMuseumsClick() {
+            document.getElementById("Museums").removeEventListener("click", handleMuseumsClick);
+        }
 
+        function enableMuseumsClick() {
+            document.getElementById("Museums").addEventListener("click", handleMuseumsClick);
+        }
+
+        enableMuseumsClick();
+
+      /*  Other*/
+        function handleOtherClick() {
             let Message = "Other";
-
             PageMethods.GetData(Message, onSuccess, onError);
+            disableOtherClick();
         }
-        document.getElementById("Other").addEventListener("click", GetOther);
+
+        function disableOtherClick() {
+            document.getElementById("Other").removeEventListener("click", handleOtherClick);
+        }
+
+        function enableOtherClick() {
+            document.getElementById("Other").addEventListener("click", handleOtherClick);
+        }
+
+        enableOtherClick();
 
 
-
-        /*add filter for how many points appear-------------------------------still being edited----------------------------------*/
-        //const filterElement = document.getElementById("filter-widget");
-
-        //const markerFilter = (event) => {
-        //    const selectRange = event.target.getAttribute("data");
-        //    let filterExpression = "";
-
-        //    switch (selectRange) {
-        //        case "1-3":
-        //            filterExpression = "point_count >= 1 AND point_count <=3";
-        //            break;
-        //        case "4-6":
-        //            filterExpression = "point_count >= 4 AND point_count <=6";
-        //            break;
-        //        case "7-10":
-        //            filterExpression = "point_count >= 7 AND point_count <=10";
-        //            break;
-        //    }
-
-
-        //    featureLayerView.filter = {
-        //        where: filterExpression
-        //    };
-        //};
-
-        //filterElement.addEventlistener("click", markerFilter);
-
-        //featureLayerView = await view.whenLayerView(featureLayer);
-        //filterElement.style.visibility = "visible";
-
-        //const titleExpand = new Expand({
-        //    view: view,
-        //    content: filterElement,
-        //    expandIcon: "filter",
-        //    /*expanded: true,*/
-        //    group: "top-left"
-        //});
-        //view.ui.add(titleExpand, "top-left");
 
     });
 
