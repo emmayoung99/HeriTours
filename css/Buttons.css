@@ -7,13 +7,15 @@ Version     Date            Coder       Comments
 
 
 
-
+/*Style for the location buttons and the current location button*/
 .location-button {
     background-color: #ffa146;
     opacity: 0.8;
     color: black;
     text-align: center;
     text-decoration: double;
+    padding: 2px;
+    margin: 2px;
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
@@ -29,17 +31,20 @@ Version     Date            Coder       Comments
     }
 
     .location-button.selected {
-        background-color: rgba(255, 164, 70, 0.5); /* Darker orange color with 50% opacity */
+        background-color: rgba(255, 164, 70, 0.5); /* Darker orange color with 50% opacity after selected */
     }
 
 
-
+/*Style for the clear selection button*/
 #Clear {
-    background-color: red;
+    background-color: #d9bda2;
     opacity: 0.8;
     color: black;
     text-align: center;
     text-decoration: double;
+    padding: 4px;
+    margin: 2px;
+    margin-top: 8px;
     border-style: double;
     border-radius: 5px;
     border-color: ThreeDDarkShadow;
@@ -56,9 +61,12 @@ Version     Date            Coder       Comments
 
 
 #AddStop {
-    background-color: #fcb25d;
+    background-color: #ffa146;
     opacity: 0.8;
     color: black;
+    padding: 2px;
+    margin: 2px;
+    margin-top: 6px;
     text-align: center;
     text-decoration: double;
     border-style: double;
@@ -76,9 +84,12 @@ Version     Date            Coder       Comments
     }
 
 #RemoveStop {
-    background-color: #fcb25d;
+    background-color: #ffa146;
     opacity: 0.8;
     color: black;
+    padding: 2px;
+    margin: 2px;
+    margin-top: 6px;
     text-align: center;
     text-decoration: double;
     border-style: double;
@@ -95,3 +106,6 @@ Version     Date            Coder       Comments
         opacity: 0.4;
     }
 
+#SelOrig {
+    margin-bottom: 5px;
+}

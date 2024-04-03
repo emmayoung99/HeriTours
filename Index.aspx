@@ -62,7 +62,7 @@
                                 <a class="nav-link text-dark" href="History.aspx">History</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="MapPage.aspx">Start Your Tour</a>
+                                <a class="nav-link text-dark" href="MapPage.aspx">Create Tour</a>
                             </li>
                         </ul>
                     </div>

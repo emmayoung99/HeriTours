@@ -18,7 +18,8 @@ Version Date        Coder       Comments
 1.4.0   2024-03-27  AGibbs      Add ArcGIS script references (Map references need to be loaded after bootstrap to initialize properly); added a clearmap button
 1.4.1   2024-03-27  TBaxter     Added Buttons.css link
 1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
-1.4.3   2024-03-30  EYOUNG      Added footer.
+1.4.3   2024-03-30  EYOUNG      Added footer. Added logo to navbar.
+1.5.0   2024-04-02  EYOUNG      Added current location button.
 
      
 
@@ -33,26 +34,27 @@ Version Date        Coder       Comments
     <!-- Set the character set for the document -->
     <meta charset="utf-8" />
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    
     <!-- Map CSS -->
-    <%--<link href="./css/MapStyle.css" rel="stylesheet">--%>
+    <link href="./css/GeneralStyle.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/MapStyle.css" />
     <link rel="stylesheet" href="./css/Buttons.css" />
+    
     <!-- Polyfill for Map -->
     <%--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>--%>
-    <link href="./css/GeneralStyle.css" rel="stylesheet" />
-
+    
     <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+    
+    <!-- External scripts -->
     <script src="https://js.arcgis.com/4.29/"></script>
     <script src="./js/ArcGISMap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
 </head>
 
 <body>
-
     <form id="form1" runat="server">
 
         <header>
@@ -69,48 +71,58 @@ Version Date        Coder       Comments
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
+                                <a class="nav-link text-dark" href="Index.aspx">Home</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" href="History.aspx">History</a>
                             </li>
-                            <%--<li class="nav-item">
-                        <a class="nav-link text-dark" href="Selection.aspx">Selection</a>
-                    </li>--%>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
 
-        <div class="text-center">
-            <!-- Display a message indicating that the page is under construction and show the timestamp -->
-            <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
+        
+    <!-- Display a heading with a large font and bold text -->
+        <div class="text-center bg-beige">
+            <h1 class="display-4"><b>Create Your Tour</b></h1>
+                <!-- Display a message indicating that the page is under construction and show the timestamp -->
+                <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
         </div>
 
 
-        <div id="routeCon" class="container">
-            <h5><b>Step 1: Pick A Heritage Site Type</b></h5>
+
+        <div id="step1" class="container">
+            <h5><b>Step 1: Select Your Desired Site Types </b></h5>
             <button class="location-button" id="AntiqueShops" onclick="toggleSelected('AntiqueShops')" type="button">Antique Shops</button>
-            <button class="location-button" id="CemeteryandFuneralHomes" onclick="toggleSelected('CemeteryandFuneralHomes')" type="button">Cemetery and Funeral Homes</button>
+            <button class="location-button" id="CemeteryandFuneralHomes" onclick="toggleSelected('CemeteryandFuneralHomes')" type="button">Cemeteries and Funeral Homes</button>
             <button class="location-button" id="Churches" onclick="toggleSelected('Churches')" type="button">Churches</button>
             <button class="location-button" id="Farms" onclick="toggleSelected('Farms')" type="button">Farms</button>
             <button class="location-button" id="Hospitals" onclick="toggleSelected('Hospitals')" type="button">Hospitals</button>
             <button class="location-button" id="Museums" onclick="toggleSelected('Museums')" type="button">Museums</button>
-            <button class="location-button" id="ParkandGardens" onclick="toggleSelected('ParkandGardens')" type="button">Park and Gardens</button>
+            <button class="location-button" id="ParkandGardens" onclick="toggleSelected('ParkandGardens')" type="button">Parks and Gardens</button>
             <button class="location-button" id="Residences" onclick="toggleSelected('Residences')" type="button">Residences</button>
             <button class="location-button" id="Schools" onclick="toggleSelected('Schools')" type="button">Schools</button>
             <button class="location-button" id="Theatres" onclick="toggleSelected('Theatres')" type="button">Theatres</button>
             <button class="location-button" id="Other" onclick="toggleSelected('Other')" type="button">Other</button>
-            <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR MAP</b></button>
+            <br />
+            <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR SELECTION</b></button>
 
+            </div>
 
 
 
 
 
             <!-- Combo boxes for picking locations in the route -->
+        <div id="step2" class="container">
+            <h5><b>Step 2: Select Your Destination </b></h5>
 
-            <h5><b>Step 2: Pick The Locations on Your Tour</b></h5>
+            <!-- Optional button that if clicked, will take the user's device location as the first stop on their route -->
+            <button class="location-button" id="addCurrentLocationButton"><b>Optional: </b>Start At Your Location</button>
+
             <div class="col-sm-10">
-                <label for="SelOrig" class="control-label"><b>Pick a Starting Location</b> </label>
+                <label for="SelOrig" class="control-label"><b>Choose Your First Stop:</b> </label>
                 <select id="SelOrig" class="form-select"></select><!-- Start -->
 
                 <select id="Stop2" style="display: none" class="form-select"></select><!-- mid stop -->
@@ -122,19 +134,19 @@ Version Date        Coder       Comments
                 <select id="Stop8" style="display: none" class="form-select"></select><!-- mid stop -->
                 <select id="Stop9" style="display: none" class="form-select"></select><!-- mid stop -->
 
-                <label for="SelDes" class=" control-label"><b>Pick a Destination Location</b> </label>
+                <label for="SelDes" class=" control-label"><b>Pick a Destination</b> </label>
                 <select id="SelDes" class="form-select"></select><!-- Destination -->
 
                 <!--button that when selected unhides another stop select box -->
                 <button id="AddStop" type="button"><b>Add Another Stop</b></button>
                 <button id="RemoveStop" type="button"><b>Remove Last Added Stop</b></button>
 
+                </div>
             </div>
-        </div>
+
         <br />
-
-        <div id="viewDiv" style="height: 700px; width: 100%;"></div>
-
+        <div id="viewDiv"></div>
+        <br />
 
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true"></asp:ScriptManager>
 

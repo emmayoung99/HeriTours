@@ -1,19 +1,20 @@
 ﻿/* CSS Map1 FLOWERBOX
-Version Date        Coder      Comments
-1.0.1   2024-02-01  TBaxter    Initial. added basic map 
-1.1.0   2024-02-08  TBaxter    moved to asp.core
-1.1.1   2024-02-17  TBaxter    changed margins
-1.2.0   2024-03-13  HMusni     Migrated from cshtml to aspx solution
-1.2.1   2024-03-27  AGibbs     Added styling for ArcGIS Map 
+Version Date        Coder       Comments
+1.0.1   2024-02-01  TBaxter     Initial. added basic map 
+1.1.0   2024-02-08  TBaxter     moved to asp.core
+1.1.1   2024-02-17  TBaxter     changed margins
+1.2.0   2024-03-13  HMusni      Migrated from cshtml to aspx solution
+1.2.1   2024-03-27  AGibbs      Added styling for ArcGIS Map 
+1.2.2   2024-04-02  EYOUNG      Small style changes.
 */
 
-/*current location map*/
 #viewDiv {
     /*display: inline-block;*/
-    margin-bottom: 2%;
+    margin: 5px 1% 50px 1%; /* top right bottom left */
     height: 600px;
-    width: 100%;
     border-style: solid;
     border-color: darkorange;
-    border-width: 3px;   
+    border-width: 3px;
+    border-radius: 8px; /* Rounded corners */
 }
+

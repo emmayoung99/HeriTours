@@ -94,8 +94,13 @@ footer {
     font-style: normal
 }
 
-#routeCon {
+#step1 {
     margin-left:25px;
+}
+
+#step2 {
+    margin-left: 25px;
+    margin-top: 25px;
 }
 
 
