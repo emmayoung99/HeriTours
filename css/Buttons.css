@@ -35,6 +35,26 @@ Version     Date            Coder       Comments
     }
 
 
+/*Style for the stops buttons and the current location button*/
+.stops-button {
+    background-color: #ffa146;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    padding: 2px;
+    margin: 2px;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+
 /*Style for the clear selection button*/
 #Clear {
     background-color: #d9bda2;

@@ -20,7 +20,7 @@ Version Date        Coder       Comments
 1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
 1.4.3   2024-03-30  EYOUNG      Added footer. Added logo to navbar.
 1.5.0   2024-04-02  EYOUNG      Added current location button.
-
+1.5.1   2024-04-04  HMusni      Added 'Number of Stops' buttons for site max count filter.
      
 
 -->
@@ -105,6 +105,16 @@ Version Date        Coder       Comments
             <button class="location-button" id="Schools" onclick="toggleSelected('Schools')" type="button">Schools</button>
             <button class="location-button" id="Theatres" onclick="toggleSelected('Theatres')" type="button">Theatres</button>
             <button class="location-button" id="Other" onclick="toggleSelected('Other')" type="button">Other</button>
+            <br />
+
+            <button class="stops-button" id="ThreeStops" onclick="DoneSelection()" type="button"><b>3 Stops</b></button>
+            <button class="stops-button" id="FourStops" onclick="DoneSelection()" type="button"><b>4 Stops</b></button>
+            <button class="stops-button" id="FiveStops" onclick="DoneSelection()" type="button"><b>5 Stops</b></button>
+            <button class="stops-button" id="SixStops" onclick="DoneSelection()" type="button"><b>6 Stops</b></button>
+            <button class="stops-button" id="SevenStops" onclick="DoneSelection()" type="button"><b>7 Stops</b></button>
+            <button class="stops-button" id="EightStops" onclick="DoneSelection()" type="button"><b>8 Stops</b></button>
+            <button class="stops-button" id="NineStops" onclick="DoneSelection()" type="button"><b>9 Stops</b></button>
+            <button class="stops-button" id="TenStops" onclick="DoneSelection()" type="button"><b>10 Stops</b></button>
             <br />
             <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR SELECTION</b></button>
 
