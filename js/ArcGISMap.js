@@ -17,8 +17,8 @@ Version     Date            Coder       Comments
 2.6.0       2024-04-04      HMusni      Created a global variable for selected site arrays. Added an event listener for each 'Number of Stops' button. Added a DoneSelection() function to support the 'Number of Stops' selection filter.
 
 
-*** Could add zoom to location of start of route when selected somehow
-***Points are duplicated when button is clicked more than once
+*** Add travelmode to routes
+*** Add points to legend
 
 */
 
@@ -1006,13 +1006,13 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
 // After the user clicks a button the first time, the button will be disabled an appear greyed out ********************************
 // If the user would like to remove this selection, they will need to use the ClearMap
-function toggleSelected(buttonId) {
-    var button = document.getElementById(buttonId);
-    if (!button.classList.contains("selected")) {
-        button.classList.add("selected");
-        button.disabled = true; // Disable the button
-    }
-}
+//function toggleSelected(buttonId) {
+//    var button = document.getElementById(buttonId);
+//    if (!button.classList.contains("selected")) {
+//        button.classList.add("selected");
+//        button.disabled = true; // Disable the button
+//    }
+//}
 
 
 
