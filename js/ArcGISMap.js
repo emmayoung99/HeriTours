@@ -430,7 +430,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             // Prevent the default behavior of the button click event (page reload)
             event.preventDefault();
 
-            // Retrieve the current geolocation of the user
+            // Retrieve the current glocation of the user
             navigator.geolocation.getCurrentPosition(function (position) {
                 // Extract longitude and latitude coord
                 const currentLocation = {
