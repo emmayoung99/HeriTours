@@ -15,6 +15,7 @@ Version     Date            Coder       Comments
 2.4.1       2024-04-02      EYOUNG      Modified the ClearMap function. Buttons will now return to their default appearance on click. Also added many comments for readability.
 2.5.0       2024-04-02      EYOUNG      Added function to take the users current location and insert it as the first point in the array for the route. Converted directions from miles to km manually.
 2.6.0       2024-04-04      HMusni      Created a global variable for selected site arrays. Added an event listener for each 'Number of Stops' button. Added a DoneSelection() function to support the 'Number of Stops' selection filter.
+2.6.1       2024-04-07      AGibbs      Altered toggle boxes to remove initial selection; removed stops-button functionality on first click to remove duplicate stops
 
 
 *** Add travelmode to routes
@@ -125,7 +126,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
                 }
             },
 
-            labelPlacement: "above-center",
+            labelPlacement: "center-along",
             labelExpressionInfo: {
                 expression: "$feature.LINE_NAME"
             }
@@ -179,23 +180,23 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         });
 
 
-        /*//label popup for transit*/
-        //view.on("pointer-move", function (event) {
-        //    view.hitTest(event).then(function (response) {
-        //        if (response.results.length) {
-        //            var graphic = response.results.filter(function (result) {
-        //                // check if the graphic belongs to the layer of interest 
-        //                return result.graphic.layer === featureLayer;
-        //            })[0].graphic;
-        //            view.popup.open({
-        //                location: graphic.geometry.centroid,
-        //                features: [graphic]
-        //            });
-        //        } else {
-        //            view.popup.close();
-        //        }
-        //    });
-        //}); 
+        //label popup for transit
+        view.on("pointer-move", function (event) {
+            view.hitTest(event).then(function (response) {
+                if (response.results.length) {
+                    var graphic = response.results.filter(function (result) {
+                        // check if the graphic belongs to the layer of interest 
+                        return result.graphic.layer === featureLayer;
+                    })[0].graphic;
+                    view.openPopup({
+                        location: graphic.geometry.centroid,
+                        features: [graphic]
+                    });
+                } else {
+                    view.closePopup();
+                }
+            });
+        }); 
 
         /*  Constrain map view to Hamilton*/
         view.when(() => {
@@ -237,7 +238,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         const checkboxDiv = document.createElement("div");
         checkboxDiv.className = "esri-widget esri-component";
         checkboxDiv.style.padding = "7px 15px 5px";
-        checkboxDiv.innerHTML = '<input type="checkbox" id="trailsLayerToggle" checked> Trails';
+        checkboxDiv.innerHTML = '<input type="checkbox" id="trailsLayerToggle" > Trails';
         view.ui.add(checkboxDiv, "top-left");
 
         const trailsLayerToggle = document.getElementById("trailsLayerToggle");
@@ -249,7 +250,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         const checkboxDiv2 = document.createElement("div");
         checkboxDiv2.className = "esri-widget esri-component";
         checkboxDiv2.style.padding = "7px 15px 5px";
-        checkboxDiv2.innerHTML = '<input type="checkbox" id="bikeLayerToggle" checked> Biking/Cycling';
+        checkboxDiv2.innerHTML = '<input type="checkbox" id="bikeLayerToggle" > Biking/Cycling';
         view.ui.add(checkboxDiv2, "top-left");
 
         const bikeLayerToggle = document.getElementById("bikeLayerToggle");
@@ -261,7 +262,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         const checkboxDiv3 = document.createElement("div");
         checkboxDiv3.className = "esri-widget esri-component";
         checkboxDiv3.style.padding = "7px 15px 5px";
-        checkboxDiv3.innerHTML = '<input type="checkbox" id="transitLayerToggle" checked> Transit';
+        checkboxDiv3.innerHTML = '<input type="checkbox" id="transitLayerToggle" > Transit';
         view.ui.add(checkboxDiv3, "top-left");
 
         const transitLayerToggle = document.getElementById("transitLayerToggle");
@@ -310,6 +311,16 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
         //Function to display results after selection
         function DoneSelection(evt) {
+
+            disableThreeStopsClick()  //disables all buttons with one click but duplicates if all buttons arent disabled on first click
+            disableFourStopsClick()
+            disableFiveStopsClick()
+            disableSixStopsClick()
+            disableSevenStopsClick()
+            disableEightStopsClick()
+            disableNineStopsClick()
+            disableTenStopsClick()
+
             //Randomize index of selected sites array to use
             for (let i = 0; i < evt.currentTarget.myParam && i < allSites.length; ++i) {
                 let randomIndex = Math.floor(Math.random() * (allSites.length - 1));
@@ -360,29 +371,125 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             }
         }
         // Event listener for DoneSelection button
-        document.getElementById("ThreeStops").addEventListener("click", DoneSelection);
-        document.getElementById("ThreeStops").myParam = 3;
+        function disableThreeStopsClick() { 
+            let button = document.getElementById("ThreeStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled=true;
+        }
 
-        document.getElementById("FourStops").addEventListener("click", DoneSelection);
-        document.getElementById("FourStops").myParam = 4;
+        function enableThreeStopsClick() {
+            let button = document.getElementById("ThreeStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 3;
+        }
+        enableThreeStopsClick();
 
-        document.getElementById("FiveStops").addEventListener("click", DoneSelection);
-        document.getElementById("FiveStops").myParam = 5;
+        function disableFourStopsClick() {
+            let button = document.getElementById("FourStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
 
-        document.getElementById("SixStops").addEventListener("click", DoneSelection);
-        document.getElementById("SixStops").myParam = 6;
+        function enableFourStopsClick() {
+            let button = document.getElementById("FourStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 4;
+        }
+        enableFourStopsClick();
 
-        document.getElementById("SevenStops").addEventListener("click", DoneSelection);
-        document.getElementById("SevenStops").myParam = 7;
+        function disableFiveStopsClick() {
+            let button = document.getElementById("FiveStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
 
-        document.getElementById("EightStops").addEventListener("click", DoneSelection);
-        document.getElementById("EightStops").myParam = 8;
+        function enableFiveStopsClick() {
+            let button = document.getElementById("FiveStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 5;
+        }
+        enableFiveStopsClick();
 
-        document.getElementById("NineStops").addEventListener("click", DoneSelection);
-        document.getElementById("NineStops").myParam = 9;
+        function disableSixStopsClick() {
+            let button = document.getElementById("SixStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
 
-        document.getElementById("TenStops").addEventListener("click", DoneSelection);
-        document.getElementById("TenStops").myParam = 10;
+        function enableSixStopsClick() {
+            let button = document.getElementById("SixStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 6;
+        }
+        enableSixStopsClick();
+
+        function disableSevenStopsClick() {
+            let button = document.getElementById("SevenStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+
+        function enableSevenStopsClick() {
+            let button = document.getElementById("SevenStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 7;
+        }
+        enableSevenStopsClick();
+
+        function disableEightStopsClick() {
+            let button = document.getElementById("EightStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+
+        function enableEightStopsClick() {
+            let button = document.getElementById("EightStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 8;
+        }
+        enableEightStopsClick();
+
+        function disableNineStopsClick() {
+            let button = document.getElementById("NineStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+
+        function enableNineStopsClick() {
+            let button = document.getElementById("NineStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 9;
+        }
+        enableNineStopsClick();
+
+        function disableTenStopsClick() {
+            let button = document.getElementById("TenStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+
+        function enableTenStopsClick() {
+            let button = document.getElementById("TenStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 10;
+        }
+        enableTenStopsClick();
 
         //allows for the current location to be an option in the route.
         //currently doesnt quite work when used.
@@ -778,6 +885,14 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
             enableHospitalsClick();
             enableMuseumsClick();
             enableOtherClick();
+            enableThreeStopsClick()
+            enableFourStopsClick()
+            enableFiveStopsClick()
+            enableSixStopsClick()
+            enableSevenStopsClick()
+            enableEightStopsClick()
+            enableNineStopsClick()
+            enableTenStopsClick()
 
             // Remove the "selected" class from all buttons, when the user uses the ClearMap function, the button colour will return to default
             var buttons = document.querySelectorAll('.location-button');
@@ -1006,13 +1121,14 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 
 // After the user clicks a button the first time, the button will be disabled an appear greyed out ********************************
 // If the user would like to remove this selection, they will need to use the ClearMap
-//function toggleSelected(buttonId) {
-//    var button = document.getElementById(buttonId);
-//    if (!button.classList.contains("selected")) {
-//        button.classList.add("selected");
-//        button.disabled = true; // Disable the button
-//    }
-//}
+function toggleSelected(buttonId) {
+    var button = document.getElementById(buttonId);
+    if (!button.classList.contains("selected")) {
+        button.classList.add("selected");
+       /* button.disabled = true; // Disable the button*/
+    }
+}
 
 
+/*Create a new legend to include points*/
 

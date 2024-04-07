@@ -107,14 +107,14 @@ Version Date        Coder       Comments
             <button class="location-button" id="Other" onclick="toggleSelected('Other')" type="button">Other</button>
             <br />
 
-            <button class="stops-button" id="ThreeStops" onclick="DoneSelection()" type="button"><b>3 Stops</b></button>
-            <button class="stops-button" id="FourStops" onclick="DoneSelection()" type="button"><b>4 Stops</b></button>
-            <button class="stops-button" id="FiveStops" onclick="DoneSelection()" type="button"><b>5 Stops</b></button>
-            <button class="stops-button" id="SixStops" onclick="DoneSelection()" type="button"><b>6 Stops</b></button>
-            <button class="stops-button" id="SevenStops" onclick="DoneSelection()" type="button"><b>7 Stops</b></button>
-            <button class="stops-button" id="EightStops" onclick="DoneSelection()" type="button"><b>8 Stops</b></button>
-            <button class="stops-button" id="NineStops" onclick="DoneSelection()" type="button"><b>9 Stops</b></button>
-            <button class="stops-button" id="TenStops" onclick="DoneSelection()" type="button"><b>10 Stops</b></button>
+            <button id="ThreeStops" onclick="DoneSelection()" type="button"><b>3 Stops</b></button>
+            <button id="FourStops" onclick="DoneSelection()" type="button"><b>4 Stops</b></button>
+            <button id="FiveStops" onclick="DoneSelection()" type="button"><b>5 Stops</b></button>
+            <button id="SixStops" onclick="DoneSelection()" type="button"><b>6 Stops</b></button>
+            <button id="SevenStops" onclick="DoneSelection()" type="button"><b>7 Stops</b></button>
+            <button id="EightStops" onclick="DoneSelection()" type="button"><b>8 Stops</b></button>
+            <button id="NineStops" onclick="DoneSelection()" type="button"><b>9 Stops</b></button>
+            <button id="TenStops" onclick="DoneSelection()" type="button"><b>10 Stops</b></button>
             <br />
             <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR SELECTION</b></button>
 
