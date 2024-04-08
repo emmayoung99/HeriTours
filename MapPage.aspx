@@ -20,7 +20,7 @@ Version Date        Coder       Comments
 1.4.2   2024-03-30  TBaxter     Added Combo boxes for Route
 1.4.3   2024-03-30  EYOUNG      Added footer. Added logo to navbar.
 1.5.0   2024-04-02  EYOUNG      Added current location button.
-
+1.5.1   2024-04-04  HMusni      Added 'Number of Stops' buttons for site max count filter.
      
 
 -->
@@ -34,20 +34,20 @@ Version Date        Coder       Comments
     <!-- Set the character set for the document -->
     <meta charset="utf-8" />
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    
+
     <!-- Map CSS -->
     <link href="./css/GeneralStyle.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/MapStyle.css" />
     <link rel="stylesheet" href="./css/Buttons.css" />
-    
+
     <!-- Polyfill for Map -->
     <%--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>--%>
-    
+
     <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
-    
+
     <!-- External scripts -->
     <script src="https://js.arcgis.com/4.29/"></script>
     <script src="./js/ArcGISMap.js"></script>
@@ -82,12 +82,12 @@ Version Date        Coder       Comments
             </nav>
         </header>
 
-        
-    <!-- Display a heading with a large font and bold text -->
+
+        <!-- Display a heading with a large font and bold text -->
         <div class="text-center bg-beige">
             <h1 class="display-4"><b>Create Your Tour</b></h1>
-                <!-- Display a message indicating that the page is under construction and show the timestamp -->
-                <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
+            <!-- Display a message indicating that the page is under construction and show the timestamp -->
+            <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
         </div>
 
 
@@ -106,15 +106,25 @@ Version Date        Coder       Comments
             <button class="location-button" id="Theatres" onclick="toggleSelected('Theatres')" type="button">Theatres</button>
             <button class="location-button" id="Other" onclick="toggleSelected('Other')" type="button">Other</button>
             <br />
+
+            <h5><b>Step 2: Select Number of Stops</b></h5>
+            <button class="stops" id="ThreeStops" onclick="DoneSelection()" type="button">3</button>
+            <button class="stops" id="FourStops" onclick="DoneSelection()" type="button">4</button>
+            <button class="stops" id="FiveStops" onclick="DoneSelection()" type="button">5</button>
+            <button class="stops" id="SixStops" onclick="DoneSelection()" type="button">6</button>
+            <button class="stops" id="SevenStops" onclick="DoneSelection()" type="button">7</button>
+            <button class="stops" id="EightStops" onclick="DoneSelection()" type="button">8</button>
+            <button class="stops" id="NineStops" onclick="DoneSelection()" type="button">9</button>
+            <button class="stops" id="TenStops" onclick="DoneSelection()" type="button">10</button>
+            <br />
+
+
             <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR SELECTION</b></button>
 
-            </div>
+        </div>
 
 
-
-
-
-            <!-- Combo boxes for picking locations in the route -->
+        <!-- Combo boxes for picking locations in the route -->
         <div id="step2" class="container">
             <h5><b>Step 2: Select Your Destination </b></h5>
 
@@ -141,8 +151,8 @@ Version Date        Coder       Comments
                 <button id="AddStop" type="button"><b>Add Another Stop</b></button>
                 <button id="RemoveStop" type="button"><b>Remove Last Added Stop</b></button>
 
-                </div>
             </div>
+        </div>
 
         <br />
         <div id="viewDiv"></div>

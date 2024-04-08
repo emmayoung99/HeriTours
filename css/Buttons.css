@@ -34,6 +34,31 @@ Version     Date            Coder       Comments
         background-color: rgba(255, 164, 70, 0.5); /* Darker orange color with 50% opacity after selected */
     }
 
+.stops {
+    background-color: #ffa146;
+    opacity: 0.8;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    padding: 2px;
+    margin: 2px;
+    border-style: double;
+    border-radius: 5px;
+    border-color: ThreeDDarkShadow;
+    font-family: "trilby", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.stops:hover {
+    background-color: darkgoldenrod;
+    color: black;
+    opacity: 0.4;
+}
+
+.stops.selected {
+    background-color: rgba(255, 164, 70, 0.5); /* Darker orange color with 50% opacity after selected */
+}
 
 /*Style for the clear selection button*/
 #Clear {
