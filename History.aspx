@@ -11,6 +11,7 @@ Version     Date            Coder       Comments
 1.1.0       2024-03-30      EYOUNG      Removed body ID as I will be adding images. Fixed text.
 1.1.1       2024-03-31      EYOUNG      Corrected images during Clay's help session. Added footer.
 1.1.2       2024-03-31      TBaxter     Turned text boxes into a container to create easy margins, renamed nav links
+1.1.3       2024-04-11      AGIBBS      Fixed image tags and added a missing closing </div>
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -28,7 +29,7 @@ Version     Date            Coder       Comments
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">
                     <!-- The navbar-logo class in GeneralStyle css isn't affecting logo, needs to be correct but working inline for now -->
-                    <img src="/css/img/logo.png" alt="Logo" height="70px" class="navbar-logo">
+                    <img src="/css/img/logo.png" alt="Logo" height="70" class="navbar-logo"/>
                     HeriTours</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +73,7 @@ Version     Date            Coder       Comments
                     <div class="column">
                         <!-- Image source: https://canadiangeographic.ca/articles/laws-braided-into-belts-three-haudenosaunee-wampum-belts-you-should-know/ -->
                         <div class="image">
-                            <img src="/css/img/treatybelt.png" alt="Man holds glass replica of the belt of the treaty of the Dish With One Spoon">
+                            <img src="/css/img/treatybelt.png" alt="Man holds glass replica of the belt of the treaty of the Dish With One Spoon"/>
                         </div>
                     </div>
 
@@ -87,7 +88,7 @@ Version     Date            Coder       Comments
                     <div class="column">
                         <!-- Source: https://www.istockphoto.com/photo/tiffany-waterfall-gm1330292976-413753259?searchscope=image%2Cfilm -->
                         <div class="image">
-                            <img src="/css/img/Waterfall.png" alt="Image of a Hamilton waterfall.">
+                            <img src="/css/img/Waterfall.png" alt="Image of a Hamilton waterfall."/>
                         </div>
                     </div>
                     <div class="column">
@@ -121,7 +122,7 @@ Version     Date            Coder       Comments
                     <div class="column">
                         <!-- Source: https://en.wikipedia.org/wiki/George_Hamilton_(city_founder) -->
                         <div class="image">
-                            <img src="/css/img/Tombstone.jpg" alt="The tombstone of George Hamilton. There are no known portraits of him.">
+                            <img src="/css/img/Tombstone.jpg" alt="The tombstone of George Hamilton. There are no known portraits of him."/>
                         </div>
                     </div>
                 </div>
@@ -141,12 +142,13 @@ Version     Date            Coder       Comments
                     <div class="column">
                         <!-- Source: https://www.istockphoto.com/photo/hamilton-ontario-james-street-looking-north-gm1219410534-356685302?searchscope=image%2Cfilm -->
                         <div class="image">
-                            <img src="/css/img/street.png" alt="A photo of the streets of downtown Hamilton.">
+                            <img src="/css/img/street.png" alt="A photo of the streets of downtown Hamilton."/>
                         </div>
                     </div>
             </div>
         </div>
     </div>
+  </div>
     <br /><br />
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

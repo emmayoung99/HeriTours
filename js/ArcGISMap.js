@@ -8,14 +8,17 @@ Version     Date            Coder       Comments
 2.0.0       2024-03-30      TBaxter     Added Route. removed click event and changed to combo box (so it would only use visible site coordinates)
                                         Editd ClearMap function to include combo boxes and route components, Added Current location to combo box
                                         Route currently only allows for single destination. 
-2.2.0       2024-03-31      AGibbs      Convert feature layers to checkbox (only visible when clicked), styled transit layer per individual route, filter some buildings out from buildings feature layer, add a home button to return to original extent
-2.3.0       2024-04-01      TBaxter     Added optional stops in AddSelLoc, created functions AddStop and RemoveStop, added to ClearMap
+2.2.0       2024-03-31      AGibbs      Convert feature layers to checkbox (only visible when clicked), styled transit layer per individual route, 
+                                        filter some buildings out from buildings feature layer, add a home button to return to original extent
+2.3.0       2024-04-01      TBaxter     Added optional stops in AddSelLoc, created functions AddStop and RemoveStop, added to ClearMap,Added AddSelLoc that populates dropdown boxes,Added ChangeRoute(), 
+                                        mapmyroute() and event listeners,Edited addGraphic to have middle stops be grey, Added RemoveStop and AddStop to Buttons.css
 2.3.1       2024-04-01      AGibbs      Changed legend to cards and collapsible widget
 2.4.0       2024-04-01      AGibbs      Made buttons selectable only once to avoid duplicate points; refreshes with the clear map button
 2.4.1       2024-04-02      EYOUNG      Modified the ClearMap function. Buttons will now return to their default appearance on click. Also added many comments for readability.
 2.5.0       2024-04-02      EYOUNG      Added function to take the users current location and insert it as the first point in the array for the route. Converted directions from miles to km manually.
 2.6.0       2024-04-04      HMusni      Created a global variable for selected site arrays. Added an event listener for each 'Number of Stops' button. Added a DoneSelection() function to support the 'Number of Stops' selection filter.
-2.6.1       2024-04-07      AGibbs      Altered toggle boxes to remove initial selection
+2.6.1       2024-04-07      AGibbs      Altered trails, transite and bike layer toggle boxes to remove initial selection; added layerlist for heritage site symbology and visibility since it could not be added to the legend,
+                                        Created function to enable and disable the number of stops buttons because to avoid duplicates
 
 
 
@@ -114,8 +117,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         // Define label properties for bus routes
         const transitLabels = {
             symbol: {
-                type: "text",
-                /*color: "#FFFFFF",*/
+                type: "text",                
                 color: { expression: "return colors[$feature.LINE_NAME];" }, // Color based on route name
                 haloColor: "white",
                 haloSize: "0.5px",
@@ -487,9 +489,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         }
         enableTenStopsClick();
 
-        //allows for the current location to be an option in the route.
-        //currently doesnt quite work when used.
-
+          
         // Function to add selected location
         function AddSelLoc(point, name) {
             // Get references to dropdown lists for origin, destination, and stops
@@ -1121,8 +1121,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
 function toggleSelected(buttonId) {
     var button = document.getElementById(buttonId);
     if (!button.classList.contains("selected")) {
-        button.classList.add("selected");
-       /* button.disabled = true; // Disable the button*/
+        button.classList.add("selected");      
     }
 }
 

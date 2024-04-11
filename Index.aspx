@@ -21,17 +21,17 @@
 <head runat="server">
     <title>Explore Historic Hamilton</title>
     <!-- Set the character set for the document -->
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     <!-- Map CSS -->
-    <link href="./css/MapStyle.css" rel="stylesheet">
+    <link href="./css/MapStyle.css" rel="stylesheet"/>
     <!-- Polyfill for Map -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link href="./css/GeneralStyle.css" rel="stylesheet">
+    <link href="./css/GeneralStyle.css" rel="stylesheet"/>
     <!-- Links to Emma's Adobe cloud to access Adobe fonts -->
-    <link rel="stylesheet" href="https://use.typekit.net/uyv3jwq.css">
+    <link rel="stylesheet" href="https://use.typekit.net/uyv3jwq.css"/>
 
 </head>
 
@@ -39,18 +39,13 @@
 <body id="bodyI">
 
     <form id="form1" runat="server">
-
-        <%--      I AM NOT SURE HOW THIS IS SUPPOSED TO WORK, I WILL COMMENT OUT FOR NOW AN INSERT NAVBAR DIRECTLY INLINE********************    
-    <!-- Include the navbar header -->
-        <uc1:NavBar runat="server" ID="NavBar" />--%>
-
-
+              
         <header>
             <nav class="navbar navbar-expand-sm navbar-light bg-orange border-bottom box-shadow mb-3">
                 <div class="container">
                     <a class="navbar-brand" asp-area="" asp-page="/Index"> 
                         <!-- The navbar-logo class in GeneralStyle css isn't affecting logo, needs to be correct but working inline for now -->
-                        <img src="/css/img/logo.png" alt="Logo" height="70px" class="navbar-logo">
+                        <img src="/css/img/logo.png" alt="Logo" height="70" class="navbar-logo"/>
                         HeriTours</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">

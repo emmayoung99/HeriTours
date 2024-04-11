@@ -82,7 +82,7 @@ Version Date        Coder       Comments
                 </div>
             </nav>
         </header>
-       <%-- <div class="help-icon" title="This is your help text!">?</div>--%>
+      
         <div class="helpContainer">
             <div class="helpIcon" onclick="toggleHelpMessage()">?</div>
             </div>
@@ -131,7 +131,6 @@ Version Date        Coder       Comments
             <button class="location-button" id="Other" onclick="toggleSelected('Other')" type="button">Other</button>
             <br />
 
-<%--<<<<<<< HEAD--%>
             <h5><b>Step 2: Select Number of Stops</b></h5>
             <button class="stops" id="ThreeStops" onclick="DoneSelection()" type="button">3</button>
             <button class="stops" id="FourStops" onclick="DoneSelection()" type="button">4</button>
@@ -143,22 +142,9 @@ Version Date        Coder       Comments
             <button class="stops" id="TenStops" onclick="DoneSelection()" type="button">10</button>
             <br />
 
-
-<%--=======--%>
-            <%--<button id="ThreeStops" onclick="DoneSelection()" type="button"><b>3 Stops</b></button>
-            <button id="FourStops" onclick="DoneSelection()" type="button"><b>4 Stops</b></button>
-            <button id="FiveStops" onclick="DoneSelection()" type="button"><b>5 Stops</b></button>
-            <button id="SixStops" onclick="DoneSelection()" type="button"><b>6 Stops</b></button>
-            <button id="SevenStops" onclick="DoneSelection()" type="button"><b>7 Stops</b></button>
-            <button id="EightStops" onclick="DoneSelection()" type="button"><b>8 Stops</b></button>
-            <button id="NineStops" onclick="DoneSelection()" type="button"><b>9 Stops</b></button>
-            <button id="TenStops" onclick="DoneSelection()" type="button"><b>10 Stops</b></button>--%>
-            <br />
-<%-->>>>>>> b9382384490c20fe161fc22c33117b6db30fcc5f--%>
             <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR SELECTION</b></button>
 
         </div>
-
 
         <!-- Combo boxes for picking locations in the route -->
         <div id="step2" class="container">
