@@ -26,7 +26,7 @@ Version     Date        Coder     Comments
 1.3.3       2024-03-28  TBaxter   Added Address variables into GetMarkers and reworked popup to include content
 1.4.0       2024-03-30  TBaxter   Created GetCoordinates function to set up for creating routes //REMOVED BC NOT NEEDED on 04-02
 1.4.1       2024-03-31  AGibbs    Removed the GetPolygons function for creating community polys from database connection
-   
+1.4.2       2024-04-06  HMusni    Set the SQL connection string as a variable  
 */
 
 
@@ -36,16 +36,18 @@ namespace DatabaseConn
     {
         private static List<String> TheModel = new List<String>();
 
+        string SQLConnection = //@"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes";
+        //@"Server=DESKTOP-NFGHOG6;Database=DB_HeriTours;Trusted_Connection=Yes";
+        //@"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
+        @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+
         public List<String> GetMarkers(String heritageType)
         {
             string query = "Select HeritageSitesID, Latitude, Longitude, HeritageSite, StreetNo1, StreetName, Community From tbl_HeritageSites HS Join tbl_HeritageSite_Type HST On HS.HeritageSitesID = HST.HeritageSite_Type_Ref JOIN tbl_Community C ON C.CommunityID = HS.Community_FK Where HST.Heritage_Type_Ref=(Select Heritage_TypeID From tbl_Heritage_Type Where Heritage_Type='" + heritageType + "')";
             List<String> Markers = new List<string>();
             SqlConnection conn = new SqlConnection();
-            //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            //conn.ConnectionString = @"Server=DESKTOP-NFGHOG6;Database=DB_HeriTours;Trusted_Connection=Yes";
-            //conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
-            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
-
+            conn.ConnectionString = SQLConnection;
+            
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
@@ -67,10 +69,8 @@ namespace DatabaseConn
         {
             List<String> HeritageTypes = new List<String>();
             SqlConnection conn = new SqlConnection();
-            //conn.ConnectionString = @"Server=LAPTOP-277KOPL1;Database=DB_HeriTours;Trusted_Connection=Yes;";
-            //conn.ConnectionString = @"Server=DESKTOP-NFGHOG6;Database=DB_HeriTours;Trusted_Connection=Yes";
-            //conn.ConnectionString = @"Server=TORI_BAXTER;Database=DB_HeriTours;Trusted_Connection=Yes";
-            conn.ConnectionString = @"Server=AINSLEE;Database=DB_HeriTours;Trusted_Connection=Yes";
+            conn.ConnectionString = SQLConnection;
+            
             {
                 SqlCommand cmd = new SqlCommand("SELECT Heritage_Type FROM tbl_Heritage_Type", conn);
                 conn.Open();

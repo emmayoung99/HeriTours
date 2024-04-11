@@ -189,6 +189,60 @@ footer {
     font-style: normal
 }
 
+
+.helpContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.helpIcon {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    background-color: #fff;
+    border: 5px solid darkgoldenrod;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.helpMessageOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1040; 
+    cursor: default;
+}
+
+.helpMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 15px;
+    width: 600px;
+    z-index: 1050; 
+}
+
+    .helpMessage p {
+        margin: 0;
+        color: black;
+        /*width: 600px;*/
+    }
+
 /*Social Media-----------------------------------------------------------------------------------*/
 /*.sticky-social-bar {
     padding: 0;

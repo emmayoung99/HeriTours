@@ -21,6 +21,7 @@ Version Date        Coder       Comments
 1.4.3   2024-03-30  EYOUNG      Added footer. Added logo to navbar.
 1.5.0   2024-04-02  EYOUNG      Added current location button.
 1.5.1   2024-04-04  HMusni      Added 'Number of Stops' buttons for site max count filter.
+1.6.0   2024-04-10  AGibbs      Added a help button/ how to use the map.
      
 
 -->
@@ -81,7 +82,30 @@ Version Date        Coder       Comments
                 </div>
             </nav>
         </header>
-
+       <%-- <div class="help-icon" title="This is your help text!">?</div>--%>
+        <div class="helpContainer">
+            <div class="helpIcon" onclick="toggleHelpMessage()">?</div>
+            </div>
+        <div id="helpMessageOverlay" class="helpMessageOverlay" onclick="toggleHelpMessage()" style="display:none;"></div>            
+        <div class="helpMessage" id="helpMessage" style="display: none;">
+                    <h3> How To Use Our Interactive Map </h3> <br />
+                    <p> <b>A.</b> Select as many Heritage Site Types using the buttons, then choose the number of stops on your adventure. <br />
+                        <b>B.</b> When your points appear choose the order you'd like to visit each stop to create a customized route. <br />
+                        <b>C. Need to use public transit? </b>Turn on the transit layer and see which HSR bus lines overlap with your route <br />
+                        <b>D. Walking/Cycling to your destination? </b>Turn on the trails/biking layers and see which overlap with your route <br />
+                        <b>E. Want to start over? </b> No problem! Simply click "clear map" to reset all your destinations
+                    </p>
+             </div>
+       
+        <script>
+            function toggleHelpMessage() {
+                var helpMessage = document.getElementById('helpMessage');
+                var overlay = document.getElementById('helpMessageOverlay');
+                var isDisplayed = window.getComputedStyle(helpMessage).display === 'block';
+                helpMessage.style.display = isDisplayed ? 'none' : 'block';
+                overlay.style.display = isDisplayed ? 'none' : 'block';
+            }
+        </script>
 
         <!-- Display a heading with a large font and bold text -->
         <div class="text-center bg-beige">
@@ -90,7 +114,7 @@ Version Date        Coder       Comments
             <p>This page is under construction as of <%= Page.Items["TimeStamp"] %>.</p>
         </div>
 
-
+        
 
         <div id="step1" class="container">
             <h5><b>Step 1: Select Your Desired Site Types </b></h5>
@@ -107,7 +131,7 @@ Version Date        Coder       Comments
             <button class="location-button" id="Other" onclick="toggleSelected('Other')" type="button">Other</button>
             <br />
 
-<<<<<<< HEAD
+<%--<<<<<<< HEAD--%>
             <h5><b>Step 2: Select Number of Stops</b></h5>
             <button class="stops" id="ThreeStops" onclick="DoneSelection()" type="button">3</button>
             <button class="stops" id="FourStops" onclick="DoneSelection()" type="button">4</button>
@@ -120,17 +144,17 @@ Version Date        Coder       Comments
             <br />
 
 
-=======
-            <button id="ThreeStops" onclick="DoneSelection()" type="button"><b>3 Stops</b></button>
+<%--=======--%>
+            <%--<button id="ThreeStops" onclick="DoneSelection()" type="button"><b>3 Stops</b></button>
             <button id="FourStops" onclick="DoneSelection()" type="button"><b>4 Stops</b></button>
             <button id="FiveStops" onclick="DoneSelection()" type="button"><b>5 Stops</b></button>
             <button id="SixStops" onclick="DoneSelection()" type="button"><b>6 Stops</b></button>
             <button id="SevenStops" onclick="DoneSelection()" type="button"><b>7 Stops</b></button>
             <button id="EightStops" onclick="DoneSelection()" type="button"><b>8 Stops</b></button>
             <button id="NineStops" onclick="DoneSelection()" type="button"><b>9 Stops</b></button>
-            <button id="TenStops" onclick="DoneSelection()" type="button"><b>10 Stops</b></button>
+            <button id="TenStops" onclick="DoneSelection()" type="button"><b>10 Stops</b></button>--%>
             <br />
->>>>>>> b9382384490c20fe161fc22c33117b6db30fcc5f
+<%-->>>>>>> b9382384490c20fe161fc22c33117b6db30fcc5f--%>
             <button id="Clear" onclick="ClearMap()" type="button"><b>CLEAR SELECTION</b></button>
 
         </div>
@@ -138,7 +162,7 @@ Version Date        Coder       Comments
 
         <!-- Combo boxes for picking locations in the route -->
         <div id="step2" class="container">
-            <h5><b>Step 2: Select Your Destination </b></h5>
+            <h5><b>Step 3: Select Your Destination </b></h5>
 
             <!-- Optional button that if clicked, will take the user's device location as the first stop on their route -->
             <button class="location-button" id="addCurrentLocationButton"><b>Optional: </b>Start At Your Location</button>

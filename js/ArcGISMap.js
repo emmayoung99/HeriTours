@@ -17,10 +17,7 @@ Version     Date            Coder       Comments
 2.6.0       2024-04-04      HMusni      Created a global variable for selected site arrays. Added an event listener for each 'Number of Stops' button. Added a DoneSelection() function to support the 'Number of Stops' selection filter.
 2.6.1       2024-04-07      AGibbs      Altered toggle boxes to remove initial selection
 
-*** Could add zoom to location of start of route when selected somehow
-***Points are duplicated when button is clicked more than once
 
-*** Add travelmode to routes
 
 
 */
@@ -28,8 +25,8 @@ Version     Date            Coder       Comments
 
 require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/Locate", "esri/widgets/Home", "esri/widgets/ScaleBar",
     "esri/widgets/Compass", "esri/widgets/Legend", "esri/widgets/LayerList", "esri/rest/route", "esri/rest/support/RouteParameters", "esri/rest/support/FeatureSet", "esri/layers/FeatureLayer",
-    "esri/widgets/Expand", "esri/rest/support/Query"],
-    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, Home, ScaleBar, Compass, Legend, LayerList, route, RouteParameters, FeatureSet, FeatureLayer, Expand, Query) {
+    "esri/widgets/Expand"],
+    function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, Home, ScaleBar, Compass, Legend, LayerList, route, RouteParameters, FeatureSet, FeatureLayer, Expand) {
 
         // Set the API key for authentication
         esriConfig.apiKey = "AAPK2814bdda61534a3aa9df296ba41b7c00KDJxD9KRkEhwMLrd-lIzZd5c_PoyiTb81_inphNdo5Q4XEQbluYCNr15smMhFbtD";
@@ -186,23 +183,23 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         });
 
         
-        /*//label popup for transit*/ 
-        //view.on("pointer-move", function (event) {
-        //    view.hitTest(event).then(function (response) {
-        //        if (response.results.length) {
-        //            var graphic = response.results.filter(function (result) {
-        //                // check if the graphic belongs to the layer of interest 
-        //                return result.graphic.layer === featureLayer;
-        //            })[0].graphic;
-        //            view.popup.open({
-        //                location: graphic.geometry.centroid,
-        //                features: [graphic]
-        //            });
-        //        } else {
-        //            view.popup.close();
-        //        }
-        //    });
-        //}); 
+        //label popup for transit 
+        view.on("pointer-move", function (event) {
+            view.hitTest(event).then(function (response) {
+                if (response.results.length) {
+                    var graphic = response.results.filter(function (result) {
+                        // check if the graphic belongs to the layer of interest 
+                        return result.graphic.layer === featureLayer;
+                    })[0].graphic;
+                    view.openPopup({
+                        location: graphic.geometry.centroid,
+                        features: [graphic]
+                    });
+                } else {
+                    view.closePopup();
+                }
+            });
+        }); 
 
         /*  Constrain map view to Hamilton*/
         view.when(() => {
@@ -308,7 +305,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         title: "Heritage Sites"});
         map.add(graphicsLayer);
 
-
+      
         /* Function to handle successful data retrieval */
         function onSuccess(result) { AddData(result); }
         /* Function to handle error during data retrieval */
@@ -327,14 +324,36 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
         //Add selected heritage site type data to global allSites array
         function AddData(TheData) {
             for (let i = 0; i < TheData.length; ++i) {
-                let tempArray = TheData[i].split("|");
+                allSites.push(TheData[i]);
+            }
+        }
+        //Function to display results after selection
+        function DoneSelection(evt) {
+
+            disableThreeStopsClick();  //disables all buttons with one click but duplicates if all buttons arent disabled on first click
+            disableFourStopsClick();
+            disableFiveStopsClick();
+            disableSixStopsClick();
+            disableSevenStopsClick();
+            disableEightStopsClick();
+            disableNineStopsClick();
+            disableTenStopsClick();
+
+            //Randomize index of selected sites array to use
+            for (let i = 0; i < evt.currentTarget.myParam && i < allSites.length; ++i) {
+                let randomIndex = Math.floor(Math.random() * (allSites.length - 1));
+                selectedSites.push(allSites[randomIndex]);
+                delete allSites[randomIndex];
+            }
+            // Iterate through the selected site data
+            for (let i = 0; i < evt.currentTarget.myParam && i < selectedSites.length; ++i) {
+                let tempArray = selectedSites[i].split("|");
                 // Define a point geometry based on the longitude and latitude
                 let point = {
                     type: "point",
                     longitude: parseFloat(tempArray[2]),
                     latitude: parseFloat(tempArray[1])
                 };
-
                 // Define a simple marker symbol for the point
                 let simpleMarkerSymbol = {
                     type: "simple-marker",
@@ -343,19 +362,15 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
                         color: [255, 255, 255], // White outline
                         width: 1
                     }
-
                 };
-
                 //4=streetNo1, 5=StreetName, 6=Community, 
                 let address = ('Address: ' + tempArray[4] + ' ' + tempArray[5] + ', ' + tempArray[6]);
-
                 AddSelLoc(point, tempArray[3]);
                 // Create a popup template for the point
                 let popupTemplate = {
                     title: tempArray[3],
                     content: address
                 };
-
                 // Create a graphic object for the point with symbol and popup template
                 let pointGraphic = new Graphic({
                     geometry: point,
@@ -365,9 +380,104 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/
                 // Add the graphic to the graphics layer
                 graphicsLayer.add(pointGraphic);
             }
-
         }
-
+        // Event listener for DoneSelection button
+        function disableThreeStopsClick() {
+            let button = document.getElementById("ThreeStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+        function enableThreeStopsClick() {
+            let button = document.getElementById("ThreeStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 3;
+        }
+        enableThreeStopsClick();
+        function disableFourStopsClick() {
+            let button = document.getElementById("FourStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+        function enableFourStopsClick() {
+            let button = document.getElementById("FourStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 4;
+        }
+        enableFourStopsClick();
+        function disableFiveStopsClick() {
+            let button = document.getElementById("FiveStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+        function enableFiveStopsClick() {
+            let button = document.getElementById("FiveStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 5;
+        }
+        enableFiveStopsClick();
+        function disableSixStopsClick() {
+            let button = document.getElementById("SixStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+        function enableSixStopsClick() {
+            let button = document.getElementById("SixStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 6;
+        }
+        enableSixStopsClick();
+        function disableSevenStopsClick() {
+            let button = document.getElementById("SevenStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+        function enableSevenStopsClick() {
+            let button = document.getElementById("SevenStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 7;
+        }
+        enableSevenStopsClick();
+        function disableEightStopsClick() {
+            let button = document.getElementById("EightStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+        function enableEightStopsClick() {
+            let button = document.getElementById("EightStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 8;
+        }
+        enableEightStopsClick();
+        function disableNineStopsClick() {
+            let button = document.getElementById("NineStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
+        function enableNineStopsClick() {
+            let button = document.getElementById("NineStops");
+            button.disabled = false;
+            button.removeEventListener("click", DoneSelection);
+            button.addEventListener("click", DoneSelection);
+            button.myParam = 9;
+        }
+        enableNineStopsClick();
+        function disableTenStopsClick() {
+            let button = document.getElementById("TenStops");
+            button.removeEventListener("click", DoneSelection);
+            button.disabled = true;
+        }
         function enableTenStopsClick() {
             let button = document.getElementById("TenStops");
             button.disabled = false;
@@ -1015,6 +1125,8 @@ function toggleSelected(buttonId) {
        /* button.disabled = true; // Disable the button*/
     }
 }
+
+
 
 
 
