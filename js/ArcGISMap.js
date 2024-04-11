@@ -13,7 +13,7 @@ Version     Date            Coder       Comments
 2.3.0       2024-04-01      TBaxter     Added optional stops in AddSelLoc, created functions AddStop and RemoveStop, added to ClearMap,Added AddSelLoc that populates dropdown boxes,Added ChangeRoute(), 
                                         mapmyroute() and event listeners,Edited addGraphic to have middle stops be grey, Added RemoveStop and AddStop to Buttons.css
 2.3.1       2024-04-01      AGibbs      Changed legend to cards and collapsible widget
-2.4.0       2024-04-01      AGibbs      Made buttons selectable only once to avoid duplicate points; refreshes with the clear map button
+2.4.0       2024-04-01      AGibbs      Made heritage site type buttons selectable only once to avoid duplicate points; refreshes with the clear map button
 2.4.1       2024-04-02      EYOUNG      Modified the ClearMap function. Buttons will now return to their default appearance on click. Also added many comments for readability.
 2.5.0       2024-04-02      EYOUNG      Added function to take the users current location and insert it as the first point in the array for the route. Converted directions from miles to km manually.
 2.6.0       2024-04-04      HMusni      Created a global variable for selected site arrays. Added an event listener for each 'Number of Stops' button. Added a DoneSelection() function to support the 'Number of Stops' selection filter.
